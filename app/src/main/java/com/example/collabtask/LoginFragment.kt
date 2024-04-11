@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
             auth.signInWithEmailAndPassword(binding.Email.text.toString(), binding.Password.text.toString()).addOnCompleteListener()
             {
                 Toast.makeText(context, "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.FirstFragment)
+                findNavController().navigate(R.id.HomePage)
             }
         }
     }

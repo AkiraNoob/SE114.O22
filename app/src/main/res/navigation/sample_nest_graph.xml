@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sample_nest_graph"
+    app:startDestination="@id/sampleText1">
+
+    <fragment
+        android:id="@+id/sampleText1"
+        android:name="com.example.collabtask.SampleText1"
+        android:label="SampleText1"
+        tools:layout="@layout/sample_text_1">
+        <action
+            android:id="@+id/action_sampleText1_to_sampleText2"
+            app:destination="@id/sampleText2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sampleText2"
+        android:name="com.example.collabtask.SampleText2"
+        android:label="SampleText2"
+        tools:layout="@layout/sample_text_2">
+        <action
+            android:id="@+id/action_sampleText2_to_sampleText1"
+            app:destination="@id/sampleText1" />
+    </fragment>
+</navigation>
