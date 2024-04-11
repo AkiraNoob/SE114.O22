@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "330775504317",
+    "project_id": "nhapmonmobile",
+    "storage_bucket": "nhapmonmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330775504317:android:836aeaa960cf1e339a1ed4",
+        "android_client_info": {
+          "package_name": "com.example.collabtask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330775504317-jl5kifhuklb4ftq36lcru5l4k8ao9g1o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.collabtask",
+            "certificate_hash": "6761b4132c2c79b191b0aff23709c55304c75805"
+          }
+        },
+        {
+          "client_id": "330775504317-6ga2el3mvhfb1hpjfhl7aov2ps7uca6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALSPt333ZxSAptATKpv-AlsFpKhkMaBJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330775504317-6ga2el3mvhfb1hpjfhl7aov2ps7uca6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
