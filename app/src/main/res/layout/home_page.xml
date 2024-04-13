@@ -17,7 +17,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="115dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/header"
@@ -29,7 +31,53 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <View
+            android:id="@+id/subheader"
+            android:layout_width="412dp"
+            android:layout_height="54dp"
+            android:background="@color/subheaderMain"
+            tools:layout_editor_absoluteY="54dp" />
+
         <ImageButton
+            android:labelFor="@+id/menuButton2"
+            android:contentDescription="@string/username_hint"
+            android:accessibilityLiveRegion="polite"
+            android:id="@+id/menuButton2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="360dp"
+            android:layout_marginTop="2dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_2"
+            android:text="@string/TEXT"
+            android:textSize="0sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/subheader"
+            app:tint="@color/textMain" />
+
+        <ImageButton
+            android:labelFor="@+id/NotiButton"
+            android:contentDescription="@string/username_hint"
+            android:accessibilityLiveRegion="polite"
+            android:id="@+id/NotiButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="370dp"
+            android:layout_marginTop="12dp"
+            android:adjustViewBounds="true"
+            android:background="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/textMain" />
+
+        <ImageButton
+            android:labelFor="@+id/searchButton"
+            android:contentDescription="@string/username_hint"
+            android:accessibilityLiveRegion="polite"
             android:id="@+id/searchButton"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -38,12 +86,15 @@
             android:adjustViewBounds="true"
             android:background="#00FFFFFF"
             android:scaleType="fitCenter"
-            android:tint="@color/textMain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/textMain"
             tools:src="@drawable/img" />
 
         <ImageButton
+            android:labelFor="@+id/menuButton"
+            android:contentDescription="@string/username_hint"
+            android:accessibilityLiveRegion="polite"
             android:id="@+id/menuButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,9 +102,22 @@
             android:layout_marginTop="12dp"
             android:background="#00FFFFFF"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            android:tint="@color/textMain"
+            app:tint="@color/textMain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#00FFFFFF"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/img_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView"
@@ -68,24 +132,6 @@
             app:layout_constraintTop_toTopOf="@id/header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/subheader"
-        android:layout_width="412dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="54dp"
-        android:background="@color/subheaderMain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
