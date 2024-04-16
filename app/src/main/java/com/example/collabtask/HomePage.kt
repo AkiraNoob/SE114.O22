@@ -36,14 +36,6 @@ class HomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val auth = Firebase.auth
-
-        binding.logout.setOnClickListener()
-        {
-            auth.signOut()
-            findNavController().navigate(R.id.LoginFragment)
-        }
     }
 
     override fun onDestroyView() {
