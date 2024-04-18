@@ -2,10 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="backgroundMain">#36363d</color>
+    <color name="backgroundMain">#026AA7</color>
 
-    <color name="headerMain">#35353b</color>
-    <color name="textMain">#aeaebd</color>
-    <color name="subheaderMain">#0e0e0f</color>
-    <color name="buttonMain">#00ed8a</color>
+    <color name="headerMain">#0079BF</color>
+    <color name="textMain">#404040</color>
+    <color name="subheaderMain">#FFFFFF</color>
+    <color name="buttonMain">#70B500</color>
 </resources>
