@@ -18,7 +18,33 @@
         android:label="LoginFragment"
         tools:layout="@layout/login_fragment">
         <action
-            android:id="@+id/action_LoginFragment_to_FirstFragment"
+            android:id="@+id/action_LoginFragment_to_HomePage"
+            app:destination="@id/HomePage" />
+        <action
+            android:id="@+id/action_LoginFragment_to_RegisterFragment"
+            app:destination="@id/RegisterFragment" />
+        <action
+            android:id="@+id/action_LoginFragment_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RegisterFragment"
+        android:name="com.example.collabtask.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/register_fragment">
+        <action
+            android:id="@+id/action_RegisterFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CreateProfile"
+        android:name="com.example.collabtask.CreateProfile"
+        android:label="CreateProfile"
+        tools:layout="@layout/create_profile">
+        <action
+            android:id="@+id/action_CreateProfile_to_HomePage"
             app:destination="@id/HomePage" />
     </fragment>
 </navigation>

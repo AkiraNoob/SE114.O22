@@ -30,6 +30,7 @@ class HomePage : Fragment() {
 
         _binding = HomePageBinding.inflate(inflater, container, false)
 
+
         return binding.root
 
     }
