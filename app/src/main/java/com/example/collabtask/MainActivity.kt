@@ -1,5 +1,6 @@
 package com.example.collabtask
 
+import android.content.res.Resources.NotFoundException
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -9,17 +10,21 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import com.example.collabtask.databinding.ActivityMainBinding
+import com.example.collabtask.use_case.UserApiUseCases
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.auth
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var authStateListtener: AuthStateListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
@@ -29,19 +34,20 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        authStateListtener = AuthStateListener {
+            if (it.currentUser == null) {
+                navController.navigate(R.id.LoginFragment)
+            } else {
+                navController.navigate(R.id.HomePage)
+            }
+        }
     }
 
     override fun onStart() {
         super.onStart()
+        auth.addAuthStateListener(authStateListtener)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-
-        if(auth.currentUser == null)
-        {
-            navController.navigate(R.id.LoginFragment)
-        } else {
-            navController.navigate(R.id.HomePage)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,5 +70,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    override fun onDestroy() {
+        auth.removeAuthStateListener(authStateListtener)
+        super.onDestroy()
     }
 }

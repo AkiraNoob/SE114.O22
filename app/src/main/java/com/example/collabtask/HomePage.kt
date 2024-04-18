@@ -30,6 +30,12 @@ class HomePage : Fragment() {
 
         _binding = HomePageBinding.inflate(inflater, container, false)
 
+        val auth = Firebase.auth
+
+        binding.textView.setOnClickListener{
+            auth.signOut()
+        }
+
         return binding.root
 
     }

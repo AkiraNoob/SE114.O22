@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.collabtask"
-        minSdk = 24
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -22,7 +22,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            isShrinkResources  = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -61,4 +61,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("com.squareup.picasso:picasso:2.8")
 }
