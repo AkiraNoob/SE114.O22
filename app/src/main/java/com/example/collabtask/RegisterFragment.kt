@@ -40,13 +40,16 @@ class RegisterFragment : Fragment() {
         binding.Submit.setOnClickListener() {
             viewLifecycleOwner.lifecycleScope.launch {
 
+                val fullName = binding.FullName.text.toString()
                 val email = binding.Email.text.toString()
                 val password = binding.Password.text.toString()
                 if (binding.RePassword.text.toString() != password) {
+                    binding.Password.error = "Mật khẩu nhập lại không khớp"
                     return@launch
                 }
 
-                AuthApiUseCases.register(email, password)
+                AuthApiUseCases.register(email, password, fullName)
+
                 Toast.makeText(
                     context,
                     "Đăng kí thành công, chờ trong giây lát để được chuyển hướng",

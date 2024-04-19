@@ -5,6 +5,7 @@ import com.example.collabtask.model.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.tasks.await
 
 class UserApiUseCases {
@@ -23,6 +24,10 @@ class UserApiUseCases {
                 throw NotFoundException("User not found")
             }
             return user.toObject(User::class.java)
+        }
+
+        suspend fun updateUser(userId: String, user: User) {
+            userFirestore.document(userId).set(user, SetOptions.merge()).await()
         }
     }
 }

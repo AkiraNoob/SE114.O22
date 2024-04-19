@@ -52,7 +52,7 @@
             android:layout_marginBottom="36dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingVertical="30dp">
+            android:paddingVertical="50dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/Avatar"
