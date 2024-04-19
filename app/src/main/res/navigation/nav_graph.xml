@@ -11,6 +11,9 @@
         android:label="HomePage"
         tools:layout="@layout/home_page">
 
+        <action
+            android:id="@+id/action_HomePage_to_CreateProfile"
+            app:destination="@id/CreateProfile" />
     </fragment>
     <fragment
         android:id="@+id/LoginFragment"
@@ -23,9 +26,6 @@
         <action
             android:id="@+id/action_LoginFragment_to_RegisterFragment"
             app:destination="@id/RegisterFragment" />
-        <action
-            android:id="@+id/action_LoginFragment_to_CreateProfile"
-            app:destination="@id/CreateProfile" />
     </fragment>
 
     <fragment
@@ -42,9 +42,5 @@
         android:id="@+id/CreateProfile"
         android:name="com.example.collabtask.CreateProfile"
         android:label="CreateProfile"
-        tools:layout="@layout/create_profile">
-        <action
-            android:id="@+id/action_CreateProfile_to_HomePage"
-            app:destination="@id/HomePage" />
-    </fragment>
+        tools:layout="@layout/create_profile"/>
 </navigation>

@@ -66,6 +66,10 @@ class CreateProfile : Fragment() {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
+        binding.GoBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         super.onViewCreated(view, savedInstanceState)
     }
 

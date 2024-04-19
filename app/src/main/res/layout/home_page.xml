@@ -39,14 +39,17 @@
                 android:textColor="@color/white" />
 
             <ImageButton
+                android:id="@+id/MenuBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:clickable="true"
                 android:src="@drawable/baseline_arrow_drop_down_24" />
 
         </LinearLayout>
 
         <ImageButton
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
@@ -54,6 +57,7 @@
             android:src="@drawable/search_24" />
 
         <ImageButton
+            android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -73,6 +77,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
+            android:id="@+id/FAB"
+            app:shapeAppearance="@style/fab_rounded"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
