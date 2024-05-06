@@ -9,11 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.collabtask.databinding.LoginFragmentBinding
-import com.example.collabtask.model.User
 import com.example.collabtask.use_case.AuthApiUseCases
-import com.example.collabtask.use_case.UserApiUseCases
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
@@ -37,22 +33,20 @@ class LoginFragment : Fragment() {
 
         binding.Submit.setOnClickListener()
         {
-            viewLifecycleOwner.lifecycleScope.launch {
-                AuthApiUseCases.login(
-                    email = binding.Email.text.toString(),
-                    password = binding.Password.text.toString()
-                ).await()
-                Toast.makeText(
-                    context,
-                    "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            findNavController().navigate(R.id.HomePage)
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                AuthApiUseCases.login(
+//                    email = binding.Email.text.toString(),
+//                    password = binding.Password.text.toString()
+//                ).await()
+//                Toast.makeText(
+//                    context,
+//                    "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
         }
 
-        binding.RegisterText.setOnClickListener() {
-            findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
-        }
     }
 
     override fun onDestroyView() {

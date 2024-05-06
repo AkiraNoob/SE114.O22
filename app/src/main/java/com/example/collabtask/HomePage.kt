@@ -43,9 +43,6 @@ class HomePage : Fragment(), PopupMenu.OnMenuItemClickListener {
         val auth = Firebase.auth
         return when (item.itemId) {
             R.id.action_settings -> {
-                findNavController().navigate(
-                    com.example.collabtask.R.id.action_HomePage_to_CreateProfile
-                )
                 true
             }
 
