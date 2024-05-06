@@ -74,18 +74,6 @@ class HomePage : Fragment(), PopupMenu.OnMenuItemClickListener {
                 ).show()
             }
         }
-
-
-        binding.MenuBtn.setOnClickListener() {
-            val popup = PopupMenu(context, it).apply {
-                setOnMenuItemClickListener(this@HomePage)
-            }
-            popup.menuInflater.inflate(R.menu.user_menu, popup.menu)
-            popup.show()
-        }
-
-        binding.FAB.setOnClickListener() {
-        }
     }
 
     override fun onDestroyView() {

@@ -9,6 +9,6 @@
       android:translateY="0.5">
     <path
         android:pathData="M0,0h100v100h-100z"
-        android:fillColor="#222831"/>
+        android:fillColor="@color/primary"/>
   </group>
 </vector>
