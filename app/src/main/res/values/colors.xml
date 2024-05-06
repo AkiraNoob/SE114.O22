@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="backgroundMain">#36363d</color>
@@ -7,4 +8,30 @@
     <color name="headerMain">#35353b</color>
     <color name="textMain">#aeaebd</color>
     <color name="subheaderMain">#0e0e0f</color>
+=======
+    <color name="primary">#222831</color>
+    <color name="secondary_light">#76ABAE</color>
+    <color name="other">#EEEEEE</color>
+    <color name="secondary">#31363F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="secondary_weight_light">#377A7D</color>
+    <color name="lemon_lime">#FFF700</color>
+    <color name="red">#FF0000</color>
+    <color name="brown">#993300</color>
+    <color name="beige">#F5F5DC</color>
+    <color name="azure">#007FFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="lavender">#B57EDC</color>
+    <color name="violet">#8000FF</color>
+    <color name="seashell">#FFF5EE</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="green">#00FF00</color>
+    <color name="green_yellow">#ADFF2F</color>
+    <color name="turquoise">#40E0D0</color>
+    <color name="saffron">#F4C430</color>
+    <color name="orange">#FF8000</color>
+    <color name="grape">#6F2DA8</color>
+>>>>>>> fca630a22ec8ec2802cea0fa5cbc74421d80668d
 </resources>

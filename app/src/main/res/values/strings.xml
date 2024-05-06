@@ -7,4 +7,9 @@
     <string name="next" translatable="false">Next</string>
     <string name="previous" translatable="false">Previous</string>
     <string name="Board" translatable="false">Bảng</string>
+<<<<<<< HEAD
+=======
+    <string name="TEXT" translatable="false">TEXT</string>
+    <string name="username_hint" translatable="false">username_hint</string>
+>>>>>>> fca630a22ec8ec2802cea0fa5cbc74421d80668d
 </resources>

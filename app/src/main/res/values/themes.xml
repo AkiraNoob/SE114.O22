@@ -3,8 +3,17 @@
     <style name="Base.Theme.CollabTask" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:windowSplashScreenBackground">@color/backgroundMain</item>
+        <item name="android:windowSplashScreenBackground">@color/primary</item>
     </style>
 
     <style name="Theme.CollabTask" parent="Base.Theme.CollabTask" />
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="fab_rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100%</item>
+    </style>
 </resources>

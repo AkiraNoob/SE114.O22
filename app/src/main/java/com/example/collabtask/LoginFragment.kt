@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.collabtask.databinding.LoginFragmentBinding
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
+import com.example.collabtask.use_case.AuthApiUseCases
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class LoginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
@@ -30,16 +31,22 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val auth = Firebase.auth
-
         binding.Submit.setOnClickListener()
         {
-            auth.signInWithEmailAndPassword(binding.Email.text.toString(), binding.Password.text.toString()).addOnCompleteListener()
-            {
-                Toast.makeText(context, "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.HomePage)
-            }
+            findNavController().navigate(R.id.HomePage)
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                AuthApiUseCases.login(
+//                    email = binding.Email.text.toString(),
+//                    password = binding.Password.text.toString()
+//                ).await()
+//                Toast.makeText(
+//                    context,
+//                    "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
         }
+
     }
 
     override fun onDestroyView() {

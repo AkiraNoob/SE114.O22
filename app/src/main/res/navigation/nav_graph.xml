@@ -18,7 +18,8 @@
         android:label="LoginFragment"
         tools:layout="@layout/login_fragment">
         <action
-            android:id="@+id/action_LoginFragment_to_FirstFragment"
+            android:id="@+id/action_LoginFragment_to_HomePage"
             app:destination="@id/HomePage" />
     </fragment>
+
 </navigation>
