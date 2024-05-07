@@ -6,13 +6,92 @@
     android:layout_height="match_parent"
     android:background="@color/primary">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@drawable/chevron_left_24"
-        android:backgroundTint="@color/white"
-        android:text="@string/TEXT"
+    <ImageButton
+        android:id="@+id/imageButtonback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/TEXT"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chevron_left_24" />
+
+    <TextView
+        android:id="@+id/tvgroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/TEXT"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonback"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvgroupdiscription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/TEXT"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvgroup"
+        app:layout_constraintStart_toEndOf="@+id/imageButtonback"
+        app:layout_constraintTop_toBottomOf="@+id/tvgroup" />
+
+    <ImageButton
+        android:id="@+id/imageButton2menu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/roundedbutton"
+        android:contentDescription="@string/TEXT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_24" />
+
+    <TextView
+        android:id="@+id/tvanalysis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/TEXT"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonback" />
+
+    <TextView
+        android:id="@+id/tvanalysislong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="@string/TEXT"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvanalysis" />
+
+    <Button
+        android:id="@+id/buttonxemngay"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/secondary"
+        android:paddingStart="10dp"
+        android:paddingEnd="8dp"
+        android:text="@string/TEXT2"
+        android:textColorLink="@color/white"
+        android:textSize="18sp"
+        app:icon="@drawable/keyboard_double_arrow_right_24"
+        app:iconGravity="end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvanalysislong" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

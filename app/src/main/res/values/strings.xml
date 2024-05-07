@@ -8,6 +8,7 @@
     <string name="previous" translatable="false">Previous</string>
     <string name="Board" translatable="false">Bảng</string>
     <string name="TEXT" translatable="false">TEXT</string>
+    <string name="TEXT2" translatable="false">Xem ngay</string>
     <string name="username_hint" translatable="false">username_hint</string>
 >>>>>>> fca630a22ec8ec2802cea0fa5cbc74421d80668d
 </resources>
