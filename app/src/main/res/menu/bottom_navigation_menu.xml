@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/DashboardMenuItem"
+        android:icon="@drawable/dashboard_selector"
+        android:title="Trang chủ" />
+    <item
+        android:id="@+id/GroupsMenuItem"
+        android:icon="@drawable/groups_selector"
+        android:title="Nhóm" />
+    <item
+        android:id="@+id/NotificationMenuItem"
+        android:icon="@drawable/notification_selector"
+        android:title="Thông báo" />
+    <item
+        android:id="@+id/AccountMenuItem"
+        android:icon="@drawable/account_circle_selector"
+        android:title="Cá nhân" />
+</menu>

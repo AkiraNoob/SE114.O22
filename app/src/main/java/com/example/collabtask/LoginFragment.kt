@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
 
         binding.Submit.setOnClickListener()
         {
-            findNavController().navigate(R.id.HomePage)
+            findNavController().navigate(R.id.navigation_fragment)
 //            viewLifecycleOwner.lifecycleScope.launch {
 //                AuthApiUseCases.login(
 //                    email = binding.Email.text.toString(),

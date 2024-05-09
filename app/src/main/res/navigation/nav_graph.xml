@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/LoginFragment">
+    app:startDestination="@id/login_fragment">
 
     <fragment
-        android:id="@+id/HomePage"
-        android:name="com.example.collabtask.HomePage"
-        android:label="HomePage"
-        tools:layout="@layout/home_page">
-
-    </fragment>
-    <fragment
-        android:id="@+id/LoginFragment"
+        android:id="@+id/login_fragment"
         android:name="com.example.collabtask.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/login_fragment">
         <action
-            android:id="@+id/action_LoginFragment_to_HomePage"
-            app:destination="@id/HomePage" />
+            android:id="@+id/action_LoginFragment_to_navigationActivity"
+            app:destination="@id/navigation_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_fragment"
+        android:name="com.example.collabtask.NavigationLayoutFragment"
+        tools:layout="@layout/navigation_layout_fragment"
+        android:label="NavigationLayoutFragment" />
 
 </navigation>
