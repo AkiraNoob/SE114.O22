@@ -63,4 +63,5 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.google.android.flexbox:flexbox:3.0.0")
 }

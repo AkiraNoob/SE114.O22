@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/login_fragment">
+    app:startDestination="@id/boardListDetailFragment">
 
     <fragment
         android:id="@+id/login_fragment"
@@ -18,6 +18,12 @@
         android:id="@+id/navigation_fragment"
         android:name="com.example.collabtask.NavigationLayoutFragment"
         tools:layout="@layout/navigation_layout_fragment"
-        android:label="NavigationLayoutFragment" />
+        android:label="NavigationLayoutFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/boardListDetailFragment"
+        android:name="com.example.collabtask.BoardListDetailFragment"
+        android:label="BoardDetailFragment" >
+    </fragment>
 
 </navigation>

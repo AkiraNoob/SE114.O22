@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/board_card_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/rounded_shape"
+    android:backgroundTint="@color/secondary_weight_light"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="8dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/board_card_labels_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        />
+
+    <TextView
+        android:id="@+id/board_card_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textFontWeight="400"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/board_card_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textFontWeight="400"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/board_card_num_of_comment_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/chat_24" />
+
+        <TextView
+            android:id="@+id/board_card_num_of_comment_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textFontWeight="400"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="8dp"
+        android:id="@+id/board_card_users_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
