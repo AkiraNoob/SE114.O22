@@ -18,6 +18,6 @@ data class CardAction(
     val affectUserId: String?,
     val actionDate: Date,
     val affectFileName: String?,
-
-    )
+    val affectBoardListId: String?
+)
 
