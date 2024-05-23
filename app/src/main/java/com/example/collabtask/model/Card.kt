@@ -3,7 +3,6 @@ package com.example.collabtask.model
 import java.util.Date
 
 data class Card(
-    val cardId: String,
     val name: String,
     val listId: String,
     val description: String? = "",
