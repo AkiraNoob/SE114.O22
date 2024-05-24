@@ -4,6 +4,7 @@ import java.util.Date
 
 data class CardComment(
     val ownerId: String,
+    val cardId: String,
     val content: String,
     val commentDate: Date
 )
@@ -13,6 +14,7 @@ enum class CardActionType {
 }
 
 data class CardAction(
+    val cardId: String,
     val type: CardActionType,
     val ownerId: String,
     val affectUserId: String?,
