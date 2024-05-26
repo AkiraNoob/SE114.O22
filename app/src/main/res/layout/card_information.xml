@@ -3,128 +3,147 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    android:fillViewport="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/primary">
 
 
-        <ImageButton
-            android:id="@+id/imageButtonback"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarBack"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/chevron_left_24" />
+            android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvgroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="@string/TEXT"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
-            app:layout_constraintStart_toEndOf="@+id/imageButtonback"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvgroupdiscription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:text="@string/TEXT"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvgroup"
-            app:layout_constraintStart_toEndOf="@+id/imageButtonback"
-            app:layout_constraintTop_toBottomOf="@+id/tvgroup" />
+                <ImageButton
+                    android:id="@+id/imageButtonback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00FFFFFF"
+                    android:contentDescription="@string/TEXT"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/chevron_left_24" />
 
-        <ImageButton
-            android:id="@+id/imageButton2menu"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/roundedbutton"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_24" />
+                <TextView
+                    android:id="@+id/tvgroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/TEXT"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonback"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <View
+                <TextView
+                    android:id="@+id/tvgroupdiscription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/TEXT"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonback"
+                    app:layout_constraintTop_toBottomOf="@+id/tvgroup" />
+
+
+                <ImageButton
+                    android:id="@+id/imageButton2menu"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/roundedbutton"
+                    android:contentDescription="@string/TEXT"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu_24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/viewbuttongroup"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="124dp"
-            android:background="@color/backgroundMain"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardBackgroundColor="@color/backgroundMain"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvgroupdiscription"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbarBack">
 
-        <Button
-            android:id="@+id/buttonthanhvien"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="@color/primary"
-            android:text="@string/TEXT3"
-            android:textAlignment="textStart"
-            android:textSize="12sp"
-            app:icon="@drawable/groups_24"
-            app:iconTint="@color/saffron"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvgroupdiscription" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/buttonthemtep"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/primary"
-            android:text="@string/TEXT4"
-            android:textAlignment="textStart"
-            android:textSize="12sp"
-            app:icon="@drawable/attach_file_add_24"
-            app:iconTint="@color/lavender"
-            app:layout_constraintEnd_toEndOf="@+id/viewbuttongroup"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/buttonthanhvien"
-            app:layout_constraintTop_toBottomOf="@+id/tvgroupdiscription" />
+                <Button
+                    android:id="@+id/buttonthanhvien"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="@string/TEXT3"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:icon="@drawable/groups_24"
+                    app:iconTint="@color/saffron"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/buttonchuyendanhsach"
-            android:layout_width="185dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="15dp"
-            android:backgroundTint="@color/primary"
-            android:text="@string/TEXT5"
-            android:textAlignment="textStart"
-            android:textSize="12sp"
-            app:icon="@drawable/move_group_24"
-            app:iconTint="@color/azure"
-            app:layout_constraintBottom_toBottomOf="@+id/viewbuttongroup"
-            app:layout_constraintStart_toStartOf="@+id/viewbuttongroup"
-            app:layout_constraintTop_toBottomOf="@+id/buttonthanhvien" />
+                <Button
+                    android:id="@+id/buttonthemtep"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="@string/TEXT4"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:icon="@drawable/attach_file_add_24"
+                    app:iconTint="@color/lavender"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/buttonchuyendanhsach"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="12dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="@string/TEXT5"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:icon="@drawable/move_group_24"
+                    app:iconTint="@color/azure"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/tvthemmota"
@@ -151,11 +170,14 @@
             app:layout_constraintTop_toBottomOf="@+id/viewbuttongroup"
             app:srcCompat="@drawable/notes_24" />
 
+
         <View
             android:id="@+id/vngayhethan"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@color/backgroundMain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvthemmota" />
 
@@ -163,7 +185,7 @@
             android:id="@+id/tvngayhethan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:text="@string/TEXT7"
             android:textColor="@color/secondary_light"
             android:textSize="16sp"
@@ -187,10 +209,8 @@
             android:id="@+id/vthemnhan"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:background="@color/backgroundMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vngayhethan" />
 
@@ -210,7 +230,7 @@
             android:id="@+id/tvthemnhan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:text="@string/TEXT8"
             android:textColor="@color/secondary_light"
             android:textSize="16sp"
@@ -222,12 +242,10 @@
             android:id="@+id/vdanhsachcongviec"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:background="@color/backgroundMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vthemnhan" />
+            app:layout_constraintTop_toBottomOf="@+id/vthemnhan" />
 
         <ImageView
             android:id="@+id/ivdanhsachcongviec"
@@ -245,25 +263,62 @@
             android:id="@+id/tvdanhsachcongviec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:text="@string/TEXT9"
-            android:textColor="@color/secondary_light"
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/vdanhsachcongviec"
             app:layout_constraintStart_toEndOf="@+id/ivdanhsachcongviec"
             app:layout_constraintTop_toTopOf="@+id/vdanhsachcongviec" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButtonlistdown"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="8dp"
             android:background="#00FFFFFF"
             android:contentDescription="@string/TEXT"
             app:layout_constraintBottom_toBottomOf="@+id/vdanhsachcongviec"
             app:layout_constraintEnd_toEndOf="@+id/vdanhsachcongviec"
             app:layout_constraintTop_toTopOf="@+id/vdanhsachcongviec"
-            app:layout_constraintVertical_bias="0.538"
             app:srcCompat="@drawable/expand_more_24" />
+
+        <TextView
+            android:id="@+id/tvbinhluanvahoatdong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/TEXT10"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="558dp" />
+
+        <ImageButton
+            android:id="@+id/imageButtonfilter"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="#00FFFFFF"
+            android:contentDescription="@string/TEXT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/filter_list_24"
+            tools:layout_editor_absoluteY="551dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@+id/vdanhsachcongviec"
+            tools:layout_editor_absoluteX="176dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:layout_editor_absoluteX="175dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
