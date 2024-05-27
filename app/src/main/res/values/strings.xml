@@ -17,6 +17,15 @@
     <string name="TEXT8" translatable="false">Thêm nhãn</string>
     <string name="TEXT9" translatable="false">Danh sách công việc</string>
     <string name="TEXT10" translatable="false">Bình luận và hoạt động</string>
+    <string name="TEXT11" translatable="false">Công việc 1</string>
+    <string name="TEXT12" translatable="false">Thêm mục...</string>
+    <string name="TEXT13" translatable="false">Các tệp đính kèm</string>
+    <string name="TEXT14" translatable="false">Ảnh</string>
+    <string name="TEXT15" translatable="false">Tệp</string>
+    <string name="Delete" translatable="false">Xóa</string>
+
+    <string name="line" translatable="false"><strike> Công việc 2</strike> </string>
+
     <string name="username_hint" translatable="false">username_hint</string>
     >>>>>>> fca630a22ec8ec2802cea0fa5cbc74421d80668d
 </resources>
