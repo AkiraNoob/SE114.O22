@@ -23,6 +23,9 @@
     <string name="TEXT14" translatable="false">Ảnh</string>
     <string name="TEXT15" translatable="false">Tệp</string>
     <string name="Delete" translatable="false">Xóa</string>
+    <string name="DanhSach1" translatable="false">Danh sách 1</string>
+    <string name="ChuyenDanhSach" translatable="false">Chuyển danh sách</string>
+    <string name="Label" translatable="false">Nhãn</string>
 
     <string name="line" translatable="false"><strike> Công việc 2</strike> </string>
 

@@ -12,9 +12,9 @@
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/TEXT"
+        android:text="@string/Label"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="20sp"
         />
 
     <ImageButton
@@ -30,13 +30,13 @@
         android:id="@+id/tvdanhsachnhan"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="@string/TEXT"
+        android:text="@string/ChuyenDanhSach"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/tvnhan"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"/>
+        android:textSize="18sp"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/danhsach1"
@@ -52,17 +52,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:text="@string/TEXT"
-                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/DanhSach1"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:contentDescription="@string/TEXT"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/TEXT"
+                android:text="@string/DanhSach1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/TEXT"
+                android:text="@string/DanhSach1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -172,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/TEXT"
+                android:text="@string/DanhSach1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -210,7 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:text="@string/TEXT"
+                android:text="@string/DanhSach1"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
