@@ -60,50 +60,15 @@
         android:paddingHorizontal="16dp"
         android:paddingTop="50dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/other"
-            app:passwordToggleTint="@color/other">
-
-            <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="emailAddress"
-                android:focusedByDefault="true"
-                android:hint="Email *"
-                android:inputType="textEmailAddress"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/other"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/other">
-
-            <EditText
-                android:id="@+id/Password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="password"
-                android:hint="Mật khẩu *"
-                android:inputType="textPassword"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/Submit"
+            android:id="@+id/login_w_gg"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:backgroundTint="@color/secondary_light"
-            android:hint="Đăng nhập"
+            android:drawableLeft="@drawable/googleg_standard_color_18"
+            android:drawablePadding="8dp"
+            android:hint="Tiếp tục với Google"
             android:textColorHint="@color/other" />
 
     </LinearLayout>

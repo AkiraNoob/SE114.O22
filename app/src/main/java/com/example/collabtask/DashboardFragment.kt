@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,10 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.collabtask.databinding.DashboardFragmentBinding
 import com.example.collabtask.model.Board
 import com.example.collabtask.model.Team
+import com.example.collabtask.use_case.DashboardApiUserCases
+import kotlinx.coroutines.launch
 
 class DashboardFragment : Fragment() {
     private var _binding: DashboardFragmentBinding? = null
-    private val itemList: MutableList<Team> = mutableListOf()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -35,13 +37,10 @@ class DashboardFragment : Fragment() {
 
         binding.dashboardGroupList.layoutManager = LinearLayoutManager(context)
 
-        itemList.add(Team("1", "Nhóm 1", "1"))
-        itemList.add(Team("2", "Nhóm 2", "1"))
-        itemList.add(Team("3", "Nhóm 3", "1"))
-        itemList.add(Team("4", "Nhóm 4", "1"))
-
-        binding.dashboardGroupList.adapter = DashboardGroupListAdapter(itemList, findNavController())
-
+        viewLifecycleOwner.lifecycleScope.launch {
+            val itemList: List<Team> = DashboardApiUserCases.getUserJoinedTeam()
+            binding.dashboardGroupList.adapter = DashboardGroupListAdapter(itemList, findNavController())
+        }
     }
 
     override fun onDestroyView() {
@@ -86,9 +85,9 @@ class DashboardGroupListViewHolder(itemView: View) : RecyclerView.ViewHolder(ite
         innerRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
 
         for (boardId in 1..3) {
-            boardItemList.add(Board(boardId.toString(), "Bảng $boardId", "1"))
+            boardItemList.add(Board("Bảng $boardId", "1"))
         }
 
-        innerRecyclerView.adapter = DashboardGroupItemAdapter(item.teamId, boardItemList, navController)
+        innerRecyclerView.adapter = DashboardGroupItemAdapter("1", boardItemList, navController)
     }
 }

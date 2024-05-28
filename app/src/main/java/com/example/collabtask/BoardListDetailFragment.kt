@@ -37,15 +37,15 @@ class BoardListDetailFragment : Fragment() {
         binding.boardCardsList.layoutManager = LinearLayoutManager(context)
         binding.boardCardsList.adapter = BoardDetailAdapter(itemList)
 
-        for (cardId in 1..5) {
+        for (cardId in 1..20) {
 
             val labelList: MutableList<Label> = mutableListOf()
             val userJoinedList: MutableList<User> = mutableListOf()
 
             if (cardId % 2 == 0) {
-                labelList.add(Label("1", cardId.toString(), "#00FFFF", "abc"))
-                labelList.add(Label("1", cardId.toString(), "#993300", "abc"))
-                labelList.add(Label("1", cardId.toString(), "#FFC0CB", "abc"))
+                labelList.add(Label(cardId.toString(), "#00FFFF", "abc"))
+                labelList.add(Label(cardId.toString(), "#993300", "abc"))
+                labelList.add(Label(cardId.toString(), "#FFC0CB", "abc"))
 
                 userJoinedList.add(User("3", "nam"))
                 userJoinedList.add(User("4", "nam"))
@@ -54,7 +54,6 @@ class BoardListDetailFragment : Fragment() {
 
             itemList.add(
                 Card(
-                    cardId.toString(),
                     "Abc",
                     "123",
                     "Lorem ipsum",
@@ -93,7 +92,7 @@ class BoardDetailAdapter(private val itemList: List<Card>) :
             holder.boardCardLabelList.visibility = View.GONE
         }
 
-        if(currentItem.userJoinedCard.isNullOrEmpty()){
+        if (currentItem.userJoinedCard.isNullOrEmpty()) {
             holder.boardCardUserJoinedList.visibility = View.GONE
         }
 

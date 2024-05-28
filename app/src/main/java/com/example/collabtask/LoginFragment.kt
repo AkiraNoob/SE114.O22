@@ -1,52 +1,74 @@
 package com.example.collabtask
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.collabtask.databinding.LoginFragmentBinding
-import com.example.collabtask.use_case.AuthApiUseCases
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthCredential
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class LoginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private lateinit var auth: FirebaseAuth
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = LoginFragmentBinding.inflate(inflater, container, false)
+        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.Submit.setOnClickListener()
-        {
-            findNavController().navigate(R.id.navigation_fragment)
-//            viewLifecycleOwner.lifecycleScope.launch {
-//                AuthApiUseCases.login(
-//                    email = binding.Email.text.toString(),
-//                    password = binding.Password.text.toString()
-//                ).await()
-//                Toast.makeText(
-//                    context,
-//                    "Đăng nhập thành công, chờ trong giây lát để được chuyển hướng",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
+        binding.loginWGg.setOnClickListener() {
+            startGoogleSignIn()
         }
+    }
 
+    private fun startGoogleSignIn() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.google_web_client_id))
+            .requestEmail()
+            .build()
+
+        val googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+        val signInIntent = googleSignInClient.signInIntent
+        val task = GoogleSignIn.getSignedInAccountFromIntent(signInIntent)
+        handleSignInResult(task)
+    }
+
+    private fun handleSignInResult(task: Task<GoogleSignInAccount>) {
+        try {
+            val account = task.getResult(ApiException::class.java)!!
+            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+            signInWithCredential(credential)
+        } catch (e: ApiException) {
+            // Handle sign-in failure
+            Log.w("LoginFragment", "Google sign-in failed", e)
+        }
+    }
+
+    private fun signInWithCredential(credential: AuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) {
+                if (it.isSuccessful) {
+                    findNavController().navigate(R.id.navigation_fragment)
+                }
+            }
     }
 
     override fun onDestroyView() {
