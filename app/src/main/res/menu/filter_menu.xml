@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Chỉ hiện bình luận"/>
-    <item android:title="Chỉ hiện hoạt động"/>
-    <item android:title="Hiển thị cả bình luận và hoạt động"/>
+    <item android:title="Chỉ hiện bình luận"
+        android:id="@+id/action_showcomment"/>
+    <item android:title="Chỉ hiện hoạt động"
+        android:id="@+id/action_showaction"/>
+    <item android:title="Hiển thị cả bình luận và hoạt động"
+        android:id="@+id/action_showboth"/>
 </menu>
