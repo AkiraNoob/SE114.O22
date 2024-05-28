@@ -26,6 +26,33 @@
     <string name="DanhSach1" translatable="false">Danh sách 1</string>
     <string name="ChuyenDanhSach" translatable="false">Chuyển danh sách</string>
     <string name="Label" translatable="false">Nhãn</string>
+    <string name="ChonTuTep" translatable="false">Chọn từ tệp</string>
+    <string name="ChonTuThuVienAnh" translatable="false">Chọn từ thư viện ảnh</string>
+    <string name="ChupAnh" translatable="false">Chụp ảnh</string>
+    <string name="TenNhan" translatable="false">Tên Nhãn</string>
+    <string name="MauSac" translatable="false">Màu sắc</string>
+    <string name="Luu" translatable="false">Lưu</string>
+
+    <!--Màu sắc-->
+    <string name="Chanh" translatable="false">Chanh</string>
+    <string name="Do" translatable="false">Đỏ</string>
+    <string name="Nau" translatable="false">Nâu</string>
+    <string name="Be" translatable="false">Be</string>
+    <string name="XanhHoangHon" translatable="false">Xanh hoàng hôn</string>
+    <string name="XanhDuong" translatable="false">Xanh dương</string>
+    <string name="OaiHuong" translatable="false">Oải hương</string>
+    <string name="Tim" translatable="false">Tím</string>
+    <string name="VoSo" translatable="false">Vỏ sò</string>
+    <string name="Hong" translatable="false">Hồng</string>
+    <string name="Vang" translatable="false">Vàng</string>
+    <string name="XanhLo" translatable="false">Xanh lơ</string>
+    <string name="XanhLuc" translatable="false">Xanh lục</string>
+    <string name="VangLuc" translatable="false">Vàng lục</string>
+    <string name="NgocLam" translatable="false">Ngọc lam</string>
+    <string name="NgheTay" translatable="false">Nghệ tây</string>
+    <string name="Cam" translatable="false">Cam</string>
+    <string name="TimNho" translatable="false">Tím nho</string>
+
 
     <string name="line" translatable="false"><strike> Công việc 2</strike> </string>
 
