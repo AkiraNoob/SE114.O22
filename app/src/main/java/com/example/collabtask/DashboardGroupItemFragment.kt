@@ -10,8 +10,14 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collabtask.model.Board
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 
-class DashboardGroupItemAdapter(private val teamId: String, private val itemList: List<Board>, private val navController: NavController) :
+class DashboardGroupItemAdapter(
+    private val teamId: String,
+    private val itemList: QuerySnapshot?,
+    private val navController: NavController
+) :
     RecyclerView.Adapter<DashboardGroupItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,17 +29,22 @@ class DashboardGroupItemAdapter(private val teamId: String, private val itemList
     }
 
     override fun onBindViewHolder(holder: DashboardGroupItemViewHolder, position: Int) {
-        val currentItem = itemList[position]
-        holder.textBoardName.text = currentItem.name
-        holder.wrapper.setOnClickListener {
-        }
-        if (position == itemCount - 1) {
-            holder.divider.visibility = View.GONE
+        if (itemList != null) {
+            val currentItem = itemList.documents[position]
+            holder.textBoardName.text = currentItem.get("name").toString()
+            holder.wrapper.setOnClickListener {
+            }
+            if (position == itemCount - 1) {
+                holder.divider.visibility = View.GONE
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return itemList.size
+        if (itemList != null)
+            return itemList.size()
+
+        return 0
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.collabtask
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collabtask.databinding.DashboardFragmentBinding
-import com.example.collabtask.model.Board
-import com.example.collabtask.model.Team
-import com.example.collabtask.use_case.DashboardApiUserCases
+import com.example.collabtask.use_case.DashboardApiUseCases
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DashboardFragment : Fragment() {
@@ -38,8 +41,11 @@ class DashboardFragment : Fragment() {
         binding.dashboardGroupList.layoutManager = LinearLayoutManager(context)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val itemList: List<Team> = DashboardApiUserCases.getUserJoinedTeam()
-            binding.dashboardGroupList.adapter = DashboardGroupListAdapter(itemList, findNavController())
+            val itemList = DashboardApiUseCases.getUserJoinedTeam()
+            if (itemList != null) {
+                binding.dashboardGroupList.adapter =
+                    DashboardGroupListAdapter(itemList, findNavController())
+            }
         }
     }
 
@@ -49,8 +55,12 @@ class DashboardFragment : Fragment() {
     }
 }
 
-class DashboardGroupListAdapter(private val itemList: List<Team>, private val navController: NavController) :
+class DashboardGroupListAdapter(
+    private val itemList: List<DocumentSnapshot>,
+    private val navController: NavController
+) :
     RecyclerView.Adapter<DashboardGroupListViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -62,8 +72,8 @@ class DashboardGroupListAdapter(private val itemList: List<Team>, private val na
 
     override fun onBindViewHolder(holder: DashboardGroupListViewHolder, position: Int) {
         val currentItem = itemList[position]
-        holder.textGroupName.text = currentItem.name
-        holder.bind(itemList[position], navController)
+        holder.textGroupName.text = currentItem.get("name").toString()
+        holder.bind(currentItem, navController)
     }
 
     override fun getItemCount(): Int {
@@ -75,19 +85,18 @@ class DashboardGroupListViewHolder(itemView: View) : RecyclerView.ViewHolder(ite
     val textGroupName: TextView = itemView.findViewById(R.id.dashboard_group_item_title_name)
     val textGroupNavigate: TextView =
         itemView.findViewById(R.id.dashboard_group_item_title_navigate)
-    private val boardItemList: MutableList<Board> = mutableListOf()
 
-    fun bind(item: Team, navController: NavController) {
+    fun bind(item: DocumentSnapshot, navController: NavController) { //item is Team
         // Set up inner RecyclerView
         val innerRecyclerView: RecyclerView =
             itemView.findViewById(R.id.dashboard_group_item_boards_list)
         innerRecyclerView.setHasFixedSize(true)
         innerRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
 
-        for (boardId in 1..3) {
-            boardItemList.add(Board("Bảng $boardId", "1"))
+        CoroutineScope(Dispatchers.Main).launch {
+            val boardItemList = DashboardApiUseCases.getRecentBoardsOfTeam(item.id as String)
+            innerRecyclerView.adapter =
+                DashboardGroupItemAdapter(item.id, boardItemList, navController)
         }
-
-        innerRecyclerView.adapter = DashboardGroupItemAdapter("1", boardItemList, navController)
     }
 }

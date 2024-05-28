@@ -1,15 +1,22 @@
 package com.example.collabtask
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.credentials.CredentialManager
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.collabtask.databinding.ActivityMainBinding
+import com.example.collabtask.model.User
+import com.example.collabtask.use_case.UserApiUseCases
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.auth
+import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +36,17 @@ class MainActivity : AppCompatActivity() {
 
         authStateListener = AuthStateListener {
             if (auth.currentUser != null) {
-                navController.navigate(R.id.navigation_fragment)
+                lifecycleScope.launch {
+                    if (UserApiUseCases.getUserById(auth.currentUser!!.uid) == null) {
+                        val user = User(
+                            auth.currentUser!!.uid,
+                            fullName = auth.currentUser!!.email.toString(),
+                            email = auth.currentUser!!.email.toString()
+                        )
+                        UserApiUseCases.createUser(user)
+                    }
+                    navController.navigate(R.id.navigation_fragment)
+                }
             }
         }
     }

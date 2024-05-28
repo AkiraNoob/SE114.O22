@@ -20,7 +20,7 @@ class UserApiUseCases {
             val user = userFirestore.document(userId).get().await()
 
             if (!user.exists()) {
-                throw NotFoundException("User not found")
+               return null
             }
             return user.toObject(User::class.java)
         }
