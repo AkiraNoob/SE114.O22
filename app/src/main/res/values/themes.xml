@@ -8,6 +8,7 @@
         <item name="android:textColor">@color/other</item>
         <item name="hintTextColor">@color/other</item>
         <item name="fontWeight">500</item>
+        <item name="android:itemBackground">@color/secondary_light</item>
     </style>
 
     <style name="Theme.CollabTask" parent="Base.Theme.CollabTask" />
