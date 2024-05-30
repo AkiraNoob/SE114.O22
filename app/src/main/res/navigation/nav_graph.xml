@@ -21,7 +21,7 @@
         android:label="NavigationLayoutFragment" >
     </fragment>
     <fragment
-        android:id="@+id/boardListDetailFragment"
+        android:id="@+id/boardList_detail_fragment"
         android:name="com.example.collabtask.BoardListDetailFragment"
         android:label="BoardDetailFragment" >
     </fragment>

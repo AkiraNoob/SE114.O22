@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/secondary"
@@ -73,6 +73,7 @@
                 </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/menu_btn"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/circle_shape"
@@ -88,12 +89,12 @@
             android:backgroundTint="@color/secondary_light" />
 
         <androidx.recyclerview.widget.RecyclerView
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:id="@+id/board_cards_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
-            android:paddingVertical="16dp" />
+            android:paddingVertical="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

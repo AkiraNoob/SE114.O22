@@ -3,8 +3,10 @@ package com.example.collabtask
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     private var _binding: DashboardFragmentBinding? = null
 
     // This property is only valid between onCreateView and
@@ -46,6 +48,31 @@ class DashboardFragment : Fragment() {
                 binding.dashboardGroupList.adapter =
                     DashboardGroupListAdapter(itemList, findNavController())
             }
+        }
+
+        binding.addBtn.setOnClickListener {
+            val popup = PopupMenu(context, it).apply {
+                setOnMenuItemClickListener(this@DashboardFragment)
+            }
+            popup.menuInflater.inflate(R.menu.dashboard_add_menu, popup.menu)
+            popup.setForceShowIcon(true)
+            popup.show()
+        }
+    }
+
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.add_team -> {
+                val dialog = AddTeamDialogFragment()
+                dialog.show(requireFragmentManager(), "add_team_dialog")
+                true
+            }
+//            R.id.add_personal_board -> {
+//                val dialog = AddPersonalBoardDialogFragment()
+//                dialog.show(requireFragmentManager(), "add_personal_board_dialog")
+//                true
+//            }
+            else -> false
         }
     }
 

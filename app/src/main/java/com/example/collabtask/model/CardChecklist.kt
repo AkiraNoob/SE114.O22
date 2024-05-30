@@ -1,7 +1,7 @@
 package com.example.collabtask.model
 
 data class CardChecklist(
-    val content: String,
+    val content: String = "",
     val isDone: Boolean = false,
-    val cardId: String
+    val cardId: String = ""
 )

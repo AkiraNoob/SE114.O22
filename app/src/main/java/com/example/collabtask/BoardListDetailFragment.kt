@@ -2,20 +2,29 @@ package com.example.collabtask
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.collabtask.databinding.BoardListDetailFragmentBinding
 import com.example.collabtask.model.Card
-import com.example.collabtask.model.Label
 import com.example.collabtask.model.User
+import com.example.collabtask.use_case.BoardListDetailApiUseCases
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
-class BoardListDetailFragment : Fragment() {
+
+class BoardListDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     private var _binding: BoardListDetailFragmentBinding? = null
     private val itemList: MutableList<Card> = mutableListOf()
 
@@ -35,31 +44,32 @@ class BoardListDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.boardCardsList.layoutManager = LinearLayoutManager(context)
-        binding.boardCardsList.adapter = BoardDetailAdapter(itemList)
 
-        for (cardId in 1..20) {
 
-            val labelList: MutableList<Label> = mutableListOf()
-            val userJoinedList: MutableList<User> = mutableListOf()
-
-            if (cardId % 2 == 0) {
-                labelList.add(Label(cardId.toString(), "#00FFFF", "abc"))
-                labelList.add(Label(cardId.toString(), "#993300", "abc"))
-                labelList.add(Label(cardId.toString(), "#FFC0CB", "abc"))
-
-                userJoinedList.add(User("3", "nam"))
-                userJoinedList.add(User("4", "nam"))
-                userJoinedList.add(User("5", "nam"))
+        binding.menuBtn.setOnClickListener {
+            val popup = PopupMenu(context, it).apply {
+                setOnMenuItemClickListener(this@BoardListDetailFragment)
             }
+            popup.menuInflater.inflate(R.menu.add_card_menu, popup.menu)
+            popup.setForceShowIcon(true)
+            popup.show()
+        }
 
-            itemList.add(
-                Card(
-                    "Abc",
-                    "123",
-                    "Lorem ipsum",
-                    labelList = labelList
-                )
-            )
+        viewLifecycleOwner.lifecycleScope.launch {
+            val cardList = BoardListDetailApiUseCases.getCardsOfBoardList("Fh77v9HiodxqbkBjawfD")
+
+            binding.boardCardsList.adapter = BoardDetailAdapter(cardList)
+        }
+    }
+
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.add_card -> {
+                val dialog = AddCardDialogFragment("Fh77v9HiodxqbkBjawfD")
+                dialog.show(requireFragmentManager(), "add_card_dialog")
+                true
+            }
+            else -> false
         }
     }
 
@@ -85,7 +95,7 @@ class BoardDetailAdapter(private val itemList: List<Card>) :
         if (currentItem.commentList.isNullOrEmpty()) {
             holder.boardCardCommentWrapper.visibility = View.GONE
         } else {
-            holder.boardCardCommentNumOfContent.text = currentItem.commentList.size.toString()
+            holder.boardCardCommentNumOfContent.text = currentItem.commentList!!.size.toString()
         }
 
         if (currentItem.labelList.isNullOrEmpty()) {
@@ -114,7 +124,6 @@ class BoardDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val boardCardLabelList: RecyclerView = itemView.findViewById(R.id.board_card_labels_list)
     val boardCardUserJoinedList: RecyclerView = itemView.findViewById(R.id.board_card_users_list)
 
-    private val userJoinedList: MutableList<User> = mutableListOf()
     fun bind(item: Card) {
         // Set up inner RecyclerView
         if (!item.labelList.isNullOrEmpty()) {
@@ -127,20 +136,31 @@ class BoardDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
             labelsListRecyclerView.layoutManager = layoutManager
 
-            labelsListRecyclerView.adapter = CardLabelItemAdapter(item.labelList)
+            labelsListRecyclerView.adapter = CardLabelItemAdapter(item.labelList!!)
         }
 
         if (!item.userJoinedCard.isNullOrEmpty()) {
+            val userJoinedList: MutableList<User> = mutableListOf()
+
             val usersListRecyclerView: RecyclerView =
                 itemView.findViewById(R.id.board_card_users_list)
             usersListRecyclerView.setHasFixedSize(true)
             usersListRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
-
-            for (userId in item.userJoinedCard) {
-                userJoinedList.add(User(userId, "Abc"))
-            }
-
             usersListRecyclerView.adapter = CardUserJoinedItemAdapter(userJoinedList)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val userQuerySnapshot = FirebaseFirestore.getInstance().collection("user").whereIn(
+                    FieldPath.documentId(),
+                    item.userJoinedCard as List<String>
+                ).get().await()
+
+                for (userDocument in userQuerySnapshot.documents) {
+                    val user = userDocument.toObject(User::class.java)
+                    if (user != null) {
+                        userJoinedList.add(user)
+                    }
+                }
+            }
         }
     }
 }
