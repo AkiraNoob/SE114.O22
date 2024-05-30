@@ -65,6 +65,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("com.google.android.flexbox:flexbox:3.0.0")
     implementation("androidx.credentials:credentials:1.2.2")
     implementation("androidx.credentials:credentials-play-services-auth:1.2.2")
