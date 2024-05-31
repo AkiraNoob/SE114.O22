@@ -45,7 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
-                        android:text="Nhóm 1"
+                        android:text="Bảng 1"
                         android:textSize="28sp" />
 
                     <TextView
@@ -53,7 +53,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_black"
-                        android:text="Mô tả nhóm" />
+                        android:text="Tên nhóm thuộc về" />
 
                 </LinearLayout>
 
@@ -109,15 +109,6 @@
                     android:text="Xem ngay"
                     android:textColor="@color/white" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Các bảng làm việc trong không gian nhóm"
-                android:fontFamily="@font/montserrat_black"
-                android:padding="5dp"
-                />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/view_table"
