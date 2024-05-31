@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class GroupDetailActivity : AppCompatActivity() {
 
@@ -54,7 +58,6 @@ class GroupDetailActivity : AppCompatActivity() {
             }
             popupMenu.show()
         }
-
     }
 
     private fun showMemberDialog() {
@@ -130,7 +133,6 @@ class GroupDetailActivity : AppCompatActivity() {
                 false
             }
         }
-
         dialog.show()
     }
 }

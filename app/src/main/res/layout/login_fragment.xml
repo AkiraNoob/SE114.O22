@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/LoginFragment"
+    android:id="@+id/login_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/secondary"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -55,50 +56,20 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:gravity="center_horizontal"
-        android:paddingTop="50dp"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingTop="50dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/Email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="emailAddress"
-                android:focusedByDefault="true"
-                android:hint="Email *"
-                android:inputType="textEmailAddress"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
-
-            <EditText
-                android:id="@+id/Password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:autofillHints="password"
-                android:hint="Mật khẩu *"
-                android:inputType="textPassword"
-                android:singleLine="true" />
-        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/Submit"
+            android:id="@+id/login_w_gg"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:hint="Đăng nhập"
-            android:textColorHint="#FFFFFF" />
+            android:backgroundTint="@color/secondary_light"
+            android:drawableLeft="@drawable/googleg_standard_color_18"
+            android:drawablePadding="8dp"
+            android:hint="Tiếp tục với Google"
+            android:textColorHint="@color/other" />
 
     </LinearLayout>
 </LinearLayout>
