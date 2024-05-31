@@ -6,6 +6,7 @@
     android:background="@color/secondary">
 
     <ImageView
+        android:contentDescription="@string/TEXT"
         android:id="@+id/labeltag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

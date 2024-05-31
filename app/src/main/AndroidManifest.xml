@@ -15,11 +15,14 @@
         android:theme="@style/Theme.CollabTask"
         tools:targetApi="31">
         <activity
-            android:name=".labelActivity"
+            android:name=".listInformationActivity"
             android:exported="false" />
         <activity
+            android:name=".labelActivity"
+            android:exported="true" />
+        <activity
             android:name=".fileAttachmentActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CardInformationActivity"
             android:exported="true" />

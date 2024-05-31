@@ -1,13 +1,19 @@
 package com.example.collabtask
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class labelActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.label_list)
+
+
+        val btnAdd : ImageButton = findViewById(R.id.ibaddlabel)
+        btnAdd.setOnClickListener {
+            startActivity(Intent(this, listInformationActivity::class.java))
+        }
     }
 }

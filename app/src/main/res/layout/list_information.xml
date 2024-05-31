@@ -7,8 +7,7 @@
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_height="wrap_content"
         android:background="@color/secondary">
 
     <ImageButton
@@ -22,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
+        android:id="@+id/ibBacktoCard"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_margin="8dp"
@@ -448,6 +448,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:contentDescription="@string/TEXT"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_margin="6dp"

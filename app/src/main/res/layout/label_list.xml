@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/secondary">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/secondary"
+    tools:context=".labelActivity">
     <TextView
         android:id="@+id/tvnhan"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,12 +20,26 @@
         />
 
     <ImageButton
+        android:id="@+id/ibcloselabel"
+        android:layout_margin="8dp"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:src="@drawable/close_24"
         app:layout_constraintEnd_toEndOf="parent"
         android:contentDescription="@string/TEXT"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibaddlabel"
+        android:contentDescription="@string/TEXT"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:rotation="45"
+        android:src="@drawable/close_24"
+        app:layout_constraintEnd_toStartOf="@id/ibcloselabel"
         app:layout_constraintTop_toTopOf="parent" />
     
     <TextView
