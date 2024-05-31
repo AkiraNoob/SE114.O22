@@ -2,7 +2,6 @@ package com.example.collabtask.use_case
 
 import android.content.res.Resources.NotFoundException
 import com.example.collabtask.model.User
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -21,7 +20,7 @@ class UserApiUseCases {
             val user = userFirestore.document(userId).get().await()
 
             if (!user.exists()) {
-                throw NotFoundException("User not found")
+               return null
             }
             return user.toObject(User::class.java)
         }

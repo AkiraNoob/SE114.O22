@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/group_add_24"
+        android:id="@+id/add_team"
+        android:title="Tạo nhóm mới" />
+<!--    <item-->
+<!--        android:icon="@drawable/dashboard_customize_24"-->
+<!--        android:id="@+id/add_personal_board"-->
+<!--        android:title="Tạo bảng mới" />-->
+</menu>

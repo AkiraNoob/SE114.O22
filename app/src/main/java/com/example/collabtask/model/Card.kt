@@ -3,10 +3,14 @@ package com.example.collabtask.model
 import java.util.Date
 
 data class Card(
-    val taskId: String,
-    val taskName: String,
-    val description: String? = "",
-    val dueDate: Date? = null,
-    val boardListId: String,
-    val userJoinedCard: List<String>
+    var name: String = "",
+    var listId: String = "",
+    var description: String? = "",
+    var dueDate: Date? = null,
+    var userJoinedCard: List<String>? = null,
+    var labelList: List<Label>? = null,
+    var checklistList: List<CardChecklist>? = null,
+    var fileList: List<CardFile>? = null,
+    var commentList: List<CardComment>? = null,
+    var actionList: List<CardAction>? = null
 )

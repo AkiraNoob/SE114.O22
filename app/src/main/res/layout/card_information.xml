@@ -160,7 +160,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:hint="@string/TEXT6"
-                android:text="@string/TEXT"
                 android:textColor="@color/white"
                 android:textColorHint="@color/secondary_weight_light" />
         </com.google.android.material.textfield.TextInputLayout>

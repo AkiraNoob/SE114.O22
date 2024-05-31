@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_label_item"
+    android:background="@drawable/rounded_shape"
+    android:layout_width="53dp"
+    android:layout_height="16dp"
+    android:layout_marginEnd="6dp">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
