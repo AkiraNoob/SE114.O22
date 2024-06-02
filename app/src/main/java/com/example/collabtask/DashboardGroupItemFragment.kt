@@ -33,6 +33,7 @@ class DashboardGroupItemAdapter(
             val currentItem = itemList.documents[position]
             holder.textBoardName.text = currentItem.get("name").toString()
             holder.wrapper.setOnClickListener {
+                navController.navigate(R.id.boardDetail)
             }
             if (position == itemCount - 1) {
                 holder.divider.visibility = View.GONE

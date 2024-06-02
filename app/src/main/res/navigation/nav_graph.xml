@@ -25,5 +25,13 @@
         android:name="com.example.collabtask.BoardListDetailFragment"
         android:label="BoardDetailFragment" >
     </fragment>
+    <fragment
+        android:id="@+id/boardDetail"
+        android:name="com.example.collabtask.BoardDetail"
+        android:label="BoardDetail" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.collabtask.DashboardFragment"
+        android:label="DashboardFragment" />
 
 </navigation>

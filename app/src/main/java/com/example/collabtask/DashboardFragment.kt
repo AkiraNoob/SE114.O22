@@ -48,6 +48,7 @@ class DashboardFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
                 binding.dashboardGroupList.adapter =
                     DashboardGroupListAdapter(itemList, findNavController())
             }
+            return@launch
         }
 
         binding.addBtn.setOnClickListener {
@@ -117,13 +118,13 @@ class DashboardGroupListViewHolder(itemView: View) : RecyclerView.ViewHolder(ite
         // Set up inner RecyclerView
         val innerRecyclerView: RecyclerView =
             itemView.findViewById(R.id.dashboard_group_item_boards_list)
-        innerRecyclerView.setHasFixedSize(true)
         innerRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
 
         CoroutineScope(Dispatchers.Main).launch {
-            val boardItemList = DashboardApiUseCases.getRecentBoardsOfTeam(item.id as String)
+            val boardItemList = DashboardApiUseCases.getRecentBoardsOfTeam(item.id)
             innerRecyclerView.adapter =
                 DashboardGroupItemAdapter(item.id, boardItemList, navController)
+            return@launch
         }
     }
 }
