@@ -1,3 +1,5 @@
+import org.apache.commons.logging.LogFactory.release
+
 plugins {
     id("org.jetbrains.kotlin.android")
     id("com.android.application")

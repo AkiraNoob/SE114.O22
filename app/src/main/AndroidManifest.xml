@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollabTask"
         tools:targetApi="31">
+        <activity
+            android:name=".listInformationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".labelActivity"
+            android:exported="true" />
+        <activity
+            android:name=".fileAttachmentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CardInformationActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,4 +46,5 @@
 
         </activity>
     </application>
+
 </manifest>

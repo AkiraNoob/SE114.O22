@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.collabtask.databinding.DashboardFragmentBinding
 import com.example.collabtask.databinding.GroupsFragmentBinding
 
 class GroupsFragment : Fragment() {

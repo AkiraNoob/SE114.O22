@@ -129,7 +129,6 @@ class BoardDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         if (!item.labelList.isNullOrEmpty()) {
             val labelsListRecyclerView: RecyclerView =
                 itemView.findViewById(R.id.board_card_labels_list)
-            labelsListRecyclerView.setHasFixedSize(true)
 
             val layoutManager = LinearLayoutManager(itemView.context)
             layoutManager.orientation = LinearLayoutManager.HORIZONTAL
@@ -144,7 +143,6 @@ class BoardDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
             val usersListRecyclerView: RecyclerView =
                 itemView.findViewById(R.id.board_card_users_list)
-            usersListRecyclerView.setHasFixedSize(true)
             usersListRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
             usersListRecyclerView.adapter = CardUserJoinedItemAdapter(userJoinedList)
 

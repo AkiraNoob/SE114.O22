@@ -12,23 +12,14 @@ import androidx.credentials.GetCredentialResponse
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.collabtask.databinding.LoginFragmentBinding
-import com.example.collabtask.model.Card
-import com.example.collabtask.model.Label
-import com.example.collabtask.model.User
-import com.example.collabtask.use_case.UserApiUseCases
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import java.util.Date
 
 class LoginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
@@ -57,7 +48,7 @@ class LoginFragment : Fragment() {
     private fun startGoogleSignIn() {
 
         val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-            .setFilterByAuthorizedAccounts(false)
+            .setFilterByAuthorizedAccounts(true)
             .setServerClientId(getString(R.string.google_web_client_id))
             .setAutoSelectEnabled(false)
             .build()

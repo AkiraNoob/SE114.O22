@@ -25,3 +25,6 @@
 -keepclassmembers class com.example.collabtask.** {
   *;
 }
+
+-dontwarn org.conscrypt.Conscrypt
+-dontwarn org.conscrypt.OpenSSLProvider

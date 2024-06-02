@@ -9,6 +9,54 @@
     <string name="Board" translatable="false">Bảng</string>
     <string name="TEXT" translatable="false">TEXT</string>
     <string name="username_hint" translatable="false">username_hint</string>
+
+    <string name="TEXT2" translatable="false">Xem ngay</string>
+    <string name="TEXT3" translatable="false">Thành viên</string>
+    <string name="TEXT4" translatable="false">Thêm tệp đính kèm</string>
+    <string name="TEXT5" translatable="false">Chuyển danh sách</string>
+    <string name="TEXT6" translatable="false">Thêm mô tả</string>
+    <string name="TEXT7" translatable="false">Ngày hết hạn</string>
+    <string name="TEXT8" translatable="false">Thêm nhãn</string>
+    <string name="TEXT9" translatable="false">Danh sách công việc</string>
+    <string name="TEXT10" translatable="false">Bình luận và hoạt động</string>
+    <string name="TEXT11" translatable="false">Công việc 1</string>
+    <string name="TEXT12" translatable="false">Thêm mục...</string>
+    <string name="TEXT13" translatable="false">Các tệp đính kèm</string>
+    <string name="TEXT14" translatable="false">Ảnh</string>
+    <string name="TEXT15" translatable="false">Tệp</string>
+    <string name="Delete" translatable="false">Xóa</string>
+    <string name="DanhSach1" translatable="false">Danh sách 1</string>
+    <string name="ChuyenDanhSach" translatable="false">Chuyển danh sách</string>
+    <string name="Label" translatable="false">Nhãn</string>
+    <string name="ChonTuTep" translatable="false">Chọn từ tệp</string>
+    <string name="ChonTuThuVienAnh" translatable="false">Chọn từ thư viện ảnh</string>
+    <string name="ChupAnh" translatable="false">Chụp ảnh</string>
+    <string name="TenNhan" translatable="false">Tên Nhãn</string>
+    <string name="MauSac" translatable="false">Màu sắc</string>
+    <string name="Luu" translatable="false">Lưu</string>
+
+    <!--Màu sắc-->
+    <string name="Chanh" translatable="false">Chanh</string>
+    <string name="Do" translatable="false">Đỏ</string>
+    <string name="Nau" translatable="false">Nâu</string>
+    <string name="Be" translatable="false">Be</string>
+    <string name="XanhHoangHon" translatable="false">Xanh hoàng hôn</string>
+    <string name="XanhDuong" translatable="false">Xanh dương</string>
+    <string name="OaiHuong" translatable="false">Oải hương</string>
+    <string name="Tim" translatable="false">Tím</string>
+    <string name="VoSo" translatable="false">Vỏ sò</string>
+    <string name="Hong" translatable="false">Hồng</string>
+    <string name="Vang" translatable="false">Vàng</string>
+    <string name="XanhLo" translatable="false">Xanh lơ</string>
+    <string name="XanhLuc" translatable="false">Xanh lục</string>
+    <string name="VangLuc" translatable="false">Vàng lục</string>
+    <string name="NgocLam" translatable="false">Ngọc lam</string>
+    <string name="NgheTay" translatable="false">Nghệ tây</string>
+    <string name="Cam" translatable="false">Cam</string>
+    <string name="TimNho" translatable="false">Tím nho</string>
+
+
+    <string name="line" translatable="false"><strike> Công việc 2</strike> </string>
     <string name="google_web_client_id" translatable="false">330775504317-6ga2el3mvhfb1hpjfhl7aov2ps7uca6p.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

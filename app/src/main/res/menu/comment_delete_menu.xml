@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Chỉnh sửa"
+        android:icon="@drawable/stylus_note_24"
+        />
+
+    <item android:title="Xóa"
+        android:icon="@drawable/delete_24"
+        />
+</menu>

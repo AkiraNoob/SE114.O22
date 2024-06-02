@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "330775504317",
+    "firebase_url": "https://nhapmonmobile-default-rtdb.firebaseio.com",
     "project_id": "nhapmonmobile",
     "storage_bucket": "nhapmonmobile.appspot.com"
   },
@@ -13,14 +14,6 @@
         }
       },
       "oauth_client": [
-        {
-          "client_id": "330775504317-jl5kifhuklb4ftq36lcru5l4k8ao9g1o.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.collabtask",
-            "certificate_hash": "6761b4132c2c79b191b0aff23709c55304c75805"
-          }
-        },
         {
           "client_id": "330775504317-6ga2el3mvhfb1hpjfhl7aov2ps7uca6p.apps.googleusercontent.com",
           "client_type": 3

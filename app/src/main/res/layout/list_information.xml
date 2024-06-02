@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/secondary"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondary">
+
+    <ImageButton
+        android:id="@+id/ibbackbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/TEXT"
+        android:src="@drawable/chevron_left_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibBacktoCard"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/TEXT"
+        android:src="@drawable/close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/labelname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ibbackbutton">
+
+        <EditText
+            android:id="@+id/etv_item"
+            android:autofillHints="name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/TenNhan"
+            android:inputType="text"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_1"
+        app:layout_constraintTop_toBottomOf="@id/labelname"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        >
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@string/MauSac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_2"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/lemon_lime" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Chanh"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_3"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/red" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Do"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_4"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/brown" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Nau"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_5"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_4"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/beige" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Be"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_6"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/azure" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/XanhHoangHon"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_7"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_6"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/blue" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/XanhDuong"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_8"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_7"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/lavender" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/OaiHuong"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_9"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_8"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/violet" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Tim"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_10"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_9"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/seashell" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/VoSo"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_11"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_10"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/pink" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Hong"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_12"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_11"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/yellow" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/Vang"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_13"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_12"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/cyan" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/XanhLo"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_14"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_13"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/green" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/XanhLuc"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_15"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_14"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/green_yellow" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/VangLuc"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearlayout_list_16"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout_list_15"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_margin="6dp"
+            android:contentDescription="@string/TEXT"
+            android:src="@color/turquoise" />
+        <TextView
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:text="@string/NgocLam"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearlayout_list_17"
+            app:layout_constraintTop_toBottomOf="@id/linearlayout_list_16"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/TEXT"
+                android:src="@color/saffron" />
+            <TextView
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:text="@string/NgheTay"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearlayout_list_18"
+            app:layout_constraintTop_toBottomOf="@id/linearlayout_list_17"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_margin="6dp"
+                android:contentDescription="@string/TEXT"
+                android:src="@color/orange" />
+            <TextView
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:text="@string/Cam"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearlayout_list_19"
+            app:layout_constraintTop_toBottomOf="@id/linearlayout_list_18"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:contentDescription="@string/TEXT"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_margin="6dp"
+                android:src="@color/grape" />
+            <TextView
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:text="@string/TimNho"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/linearlayout_list_19"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="22sp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/Luu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

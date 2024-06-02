@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/ivcommemt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/TEXT"
+        android:padding="8dp"
+        android:src="@drawable/default_avatar_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilcomment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:outlineProvider="background"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivcommemt"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Nội dung"
+            android:hint="@string/TEXT"
+            android:inputType="text"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/ibcheck"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/TEXT"
+        android:src="@drawable/check_24px"
+        app:layout_constraintStart_toEndOf="@id/ivcommemt"
+        app:layout_constraintTop_toBottomOf="@id/tilcomment" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/TEXT"
+        android:src="@drawable/close_24"
+        app:layout_constraintStart_toEndOf="@id/ibcheck"
+        app:layout_constraintTop_toBottomOf="@id/tilcomment" />
+</androidx.constraintlayout.widget.ConstraintLayout>
