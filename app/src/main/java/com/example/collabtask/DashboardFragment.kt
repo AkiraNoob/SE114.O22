@@ -102,6 +102,9 @@ class DashboardGroupListAdapter(
         val currentItem = itemList[position]
         holder.textGroupName.text = currentItem.get("name").toString()
         holder.bind(currentItem, navController)
+        holder.textGroupNavigate.setOnClickListener {
+            navController.navigate(R.id.groupDetailActivity)
+        }
     }
 
     override fun getItemCount(): Int {

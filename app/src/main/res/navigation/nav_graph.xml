@@ -33,5 +33,9 @@
         android:id="@+id/dashboardFragment"
         android:name="com.example.collabtask.DashboardFragment"
         android:label="DashboardFragment" />
+    <activity
+        android:id="@+id/groupDetailActivity"
+        android:name="com.example.collabtask.GroupDetailActivity"
+        android:label="GroupDetailActivity" />
 
 </navigation>
