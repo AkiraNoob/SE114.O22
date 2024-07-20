@@ -16,8 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CollabTask"
         tools:targetApi="31">
+        <activity android:name=".BoardDetail"
+            android:exported="true" />
+        <activity android:name=".BoardListDetailFragment"
+            android:exported="true" />
         <activity
             android:name=".listInformationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DashboardFragment"
             android:exported="true" />
         <activity
             android:name=".labelActivity"

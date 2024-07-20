@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/primary"
     android:contentDescription="@string/TEXT"
     android:fillViewport="true"
@@ -14,85 +13,60 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".CardInformationActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary">
-
+        android:background="@color/primary"
+        android:orientation="vertical">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fillViewport="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:fillViewport="true">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
                     android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatEditText
+                  >
+                    <EditText
                         android:id="@+id/tvgroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/TEXT"
                         android:textColor="@color/white"
-                        android:textSize="24sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButton2menu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
-
-                    <TextView
-                        android:id="@+id/tvgroupdiscription"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/TEXT"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="24sp"
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageButton
                     android:id="@+id/imageButton2menu"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="16dp"
                     android:background="@drawable/roundedbutton"
                     android:contentDescription="@string/TEXT"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/menu_24" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/viewbuttongroup"
-            android:layout_width="0dp"
-            android:layout_height="124dp"
-            app:cardBackgroundColor="@color/backgroundMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbarBack">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/backgroundMain">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/buttonthanhvien"
@@ -110,757 +84,138 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/buttonthemtep"
-                    android:layout_width="185dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@color/primary"
-                    android:text="@string/TEXT4"
-                    android:textAlignment="textStart"
-                    android:textSize="12sp"
-                    app:icon="@drawable/attach_file_add_24"
-                    app:iconTint="@color/lavender"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <!--                <Button-->
+                <!--                    android:id="@+id/buttonthemtep"-->
+                <!--                    android:layout_width="185dp"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="12dp"-->
+                <!--                    android:layout_marginEnd="16dp"-->
+                <!--                    android:backgroundTint="@color/primary"-->
+                <!--                    android:text="@string/TEXT4"-->
+                <!--                    android:textAlignment="textStart"-->
+                <!--                    android:textSize="12sp"-->
+                <!--                    app:icon="@drawable/attach_file_add_24"-->
+                <!--                    app:iconTint="@color/lavender"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintTop_toTopOf="parent" />-->
 
                 <Button
                     android:id="@+id/buttonchuyendanhsach"
                     android:layout_width="185dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
                     android:backgroundTint="@color/primary"
                     android:text="@string/TEXT5"
                     android:textAlignment="textStart"
                     android:textSize="12sp"
                     app:icon="@drawable/move_group_24"
                     app:iconTint="@color/azure"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tithemmota"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivmenu"
-            app:layout_constraintTop_toBottomOf="@id/viewbuttongroup">
-
-            <EditText
-                android:inputType="text"
-                android:autofillHints="Thêm mô tả"
-                android:id="@+id/tvthemmota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:hint="@string/TEXT6"
-                android:textColor="@color/white"
-                android:textColorHint="@color/secondary_weight_light" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/ivmenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewbuttongroup"
-            app:srcCompat="@drawable/notes_24" />
-
-
-        <View
-            android:id="@+id/vngayhethan"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@color/backgroundMain"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tithemmota" />
-
-        <TextView
-            android:id="@+id/tvngayhethan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/TEXT7"
-            android:textColor="@color/secondary_light"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/vngayhethan"
-            app:layout_constraintStart_toEndOf="@+id/ivngayhethan"
-            app:layout_constraintTop_toTopOf="@+id/vngayhethan" />
-
-        <ImageView
-            android:id="@+id/ivngayhethan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/TEXT"
-            android:paddingStart="8dp"
-            android:paddingEnd="1dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vngayhethan"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/vngayhethan"
-            app:srcCompat="@drawable/acute_24" />
-
-        <View
-            android:id="@+id/vthemnhan"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/backgroundMain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vngayhethan" />
-
-        <ImageView
-            android:id="@+id/ivthemnhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/TEXT"
-            android:paddingStart="8dp"
-            android:paddingEnd="1dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vthemnhan"
-            app:layout_constraintStart_toStartOf="@+id/vthemnhan"
-            app:layout_constraintTop_toTopOf="@+id/vthemnhan"
-            app:srcCompat="@drawable/new_label_24" />
-
-        <TextView
-            android:id="@+id/tvthemnhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/TEXT8"
-            android:textColor="@color/secondary_light"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/vthemnhan"
-            app:layout_constraintStart_toEndOf="@+id/ivthemnhan"
-            app:layout_constraintTop_toTopOf="@+id/vthemnhan" />
-
-        <View
-            android:id="@+id/vdanhsachcongviec"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/backgroundMain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vthemnhan" />
-
-        <View
-            android:id="@+id/vcactepdinhkem"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/backgroundMain"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvthemmuc" />
-
-        <ImageButton
-            android:id="@+id/imageButtonlistdown2"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintBottom_toBottomOf="@+id/vcactepdinhkem"
-            app:layout_constraintEnd_toEndOf="@+id/vcactepdinhkem"
-            app:layout_constraintTop_toTopOf="@+id/vcactepdinhkem"
-            app:srcCompat="@drawable/expand_more_24" />
-
-        <ImageView
-            android:id="@+id/ivdanhsachcongviec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/TEXT"
-            android:paddingStart="8dp"
-            android:paddingEnd="1dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vdanhsachcongviec"
-            app:layout_constraintStart_toStartOf="@+id/vdanhsachcongviec"
-            app:layout_constraintTop_toTopOf="@+id/vdanhsachcongviec"
-            app:srcCompat="@drawable/checklist_24" />
-
-        <TextView
-            android:id="@+id/tvdanhsachcongviec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/TEXT9"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/vdanhsachcongviec"
-            app:layout_constraintStart_toEndOf="@+id/ivdanhsachcongviec"
-            app:layout_constraintTop_toTopOf="@+id/vdanhsachcongviec" />
-
-        <ImageButton
-            android:id="@+id/imageButtonlistdown"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintBottom_toBottomOf="@+id/vdanhsachcongviec"
-            app:layout_constraintEnd_toEndOf="@+id/vdanhsachcongviec"
-            app:layout_constraintTop_toTopOf="@+id/vdanhsachcongviec"
-            app:srcCompat="@drawable/expand_more_24" />
-
-        <TextView
-            android:id="@+id/tvbinhluanvahoatdong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/TEXT10"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvfile" />
-
-        <ImageButton
-            android:id="@+id/imageButtonfilter"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibX4"
-            app:srcCompat="@drawable/filter_list_24" />
-
-        <TextView
-            android:id="@+id/tvcongviec1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/TEXT11"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/ibX"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivcheckboxempty"
-            app:layout_constraintTop_toBottomOf="@+id/vdanhsachcongviec" />
-
-        <TextView
-            android:id="@+id/tvcongviec2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/line"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/ibX2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivcheckbox"
-            app:layout_constraintTop_toBottomOf="@+id/tvcongviec1" />
-
-        <ImageView
-            android:id="@+id/ivcheckboxempty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vdanhsachcongviec"
-            app:srcCompat="@drawable/check_box_outline_blank_24px" />
-
-        <ImageView
-            android:id="@+id/ivcheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivcheckboxempty"
-            app:srcCompat="@drawable/select_check_box_24px" />
-
-        <ImageButton
-            android:id="@+id/ibX"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vdanhsachcongviec"
-            app:srcCompat="@drawable/close_24" />
-
-        <ImageButton
-            android:id="@+id/ibX2"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibX"
-            app:srcCompat="@drawable/close_24" />
-
-        <ImageButton
-            android:id="@+id/ibX3"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageButtonlistdown2"
-            app:srcCompat="@drawable/close_24" />
-
-        <ImageButton
-            android:id="@+id/ibX4"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="#00FFFFFF"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ibX3"
-            app:srcCompat="@drawable/close_24" />
-
-        <TextView
-            android:id="@+id/tvthemmuc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/TEXT12"
-            android:text="@string/TEXT"
-            android:textColor="@color/secondary_light"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvcongviec2" />
-
-        <TextView
-            android:id="@+id/tvcactepdinhkem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/TEXT13"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/vcactepdinhkem"
-            app:layout_constraintStart_toStartOf="@+id/vcactepdinhkem"
-            app:layout_constraintTop_toTopOf="@+id/vcactepdinhkem" />
-
-        <ImageView
-            android:id="@+id/ivanh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vcactepdinhkem"
-            app:srcCompat="@drawable/photo_24" />
-
-        <TextView
-            android:id="@+id/tvanh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/TEXT14"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/ivanh"
-            app:layout_constraintTop_toBottomOf="@+id/vcactepdinhkem" />
-
-        <ImageView
-            android:id="@+id/ivfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/TEXT"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivanh"
-            app:srcCompat="@drawable/draft_24" />
-
-        <TextView
-            android:id="@+id/tvfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/TEXT15"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/ivfile"
-            app:layout_constraintTop_toBottomOf="@+id/tvanh" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout1"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvbinhluanvahoatdong"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:paddingVertical="16dp">
 
             <ImageView
-                android:id="@+id/ivbldinhkemtep"
+                android:id="@+id/ivmenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="8dp"
                 android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/attach_file_add_24" />
-
-            <TextView
-                android:id="@+id/tvbldinhkemtep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/linearlayout1"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout1"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-
-            <ImageView
-                android:id="@+id/ivblgotep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/delete_24" />
-
-            <TextView
-                android:id="@+id/tvblgotep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout2"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            >
-
-            <ImageView
-                android:id="@+id/ivblthamgiathe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/person_add_24" />
-
-            <TextView
-                android:id="@+id/tvblthamgiathe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout3" >
-
-            <ImageView
-                android:id="@+id/ivblroithe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/person_remove_24" />
-
-            <TextView
-                android:id="@+id/tvblroithe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout4">
-
-            <ImageView
-                android:id="@+id/ivblthemvaothe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/person_add_24" />
-
-            <TextView
-                android:id="@+id/tvblthemvaothe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout5">
-
-            <ImageView
-                android:id="@+id/ivblxoakhoithe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/TEXT"
-                app:srcCompat="@drawable/person_remove_24" />
-
-
-            <TextView
-                android:id="@+id/tvblxoakhoithe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearlayout7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearlayout6"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            >
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:contentDescription="@string/TEXT"
-                    android:id="@+id/ivcomment1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/default_avatar_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvten1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/TEXT"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@id/ivcomment1"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvnoidung1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/TEXT"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@id/ivcomment1"
-                    app:layout_constraintTop_toBottomOf="@id/tvten1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/tvnoidung1"
-                    app:layout_constraintStart_toEndOf="@id/ivcomment1"
-                    android:text="@string/TEXT"
-                    android:textColor="@color/white"/>
-
-                <ImageButton
-                    android:contentDescription="@string/TEXT"
-                    android:src="@drawable/more_vert_24"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="#00FFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearlayout8"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearlayout7"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:contentDescription="@string/TEXT"
-                android:id="@+id/ivcomment2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/default_avatar_24"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/viewbuttongroup"
+                app:srcCompat="@drawable/notes_24" />
 
-            <TextView
-                android:id="@+id/tvten2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@id/ivcomment2"
-                app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tithemmota"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvnoidung2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/TEXT"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@+id/ivcomment2"
-                app:layout_constraintTop_toBottomOf="@id/tvten2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/tvnoidung2"
-                app:layout_constraintStart_toEndOf="@id/ivcomment2"
-                android:text="@string/TEXT"
-                android:textColor="@color/white"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <FrameLayout
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".CardInformationActivity"
-            >
-            <RelativeLayout
-                android:id="@+id/rloverlayattachment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <EditText
+                    android:id="@+id/tvthemmota"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/secondary"
-                    >
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/linearlayoutmenu1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        >
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:padding="8dp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ChonTuTep"
-                                android:textColor="@color/white"/>
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints="Thêm mô tả"
+                    android:hint="@string/TEXT6"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/secondary_weight_light" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/TEXT"
-                                android:padding="8dp"
-                                android:src="@drawable/folder_open_24"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/linearlayoutmenu2"
-                        app:layout_constraintTop_toBottomOf="@id/linearlayoutmenu1"
-                        >
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:id="@+id/tvchontuthuvienanh"
-                                android:padding="8dp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ChonTuThuVienAnh"
-                                android:textColor="@color/white"/>
+            <ImageButton
+                android:id="@+id/tvthemmotaconfirm"
+                android:layout_gravity="center"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/roundedbutton"
+                android:contentDescription="@string/TEXT"
+                app:srcCompat="@drawable/check_24px" />
+        </LinearLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/TEXT"
-                                android:padding="8dp"
-                                android:src="@drawable/gallery_thumbnail_24"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@id/linearlayoutmenu2"
-                        >
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:padding="8dp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ChupAnh"
-                                android:textColor="@color/white"/>
+        <LinearLayout
+            android:id="@+id/vngayhethan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundMain"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="10dp">
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:contentDescription="@string/TEXT"
-                                android:padding="8dp"
-                                android:src="@drawable/add_a_photo_24"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </RelativeLayout>
-        </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/ivngayhethan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/TEXT"
+                app:srcCompat="@drawable/acute_24" />
+
+            <TextView
+                android:id="@+id/tvngayhethan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/TEXT7"
+                android:textColor="@color/secondary_light"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/vthemnhan"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@color/backgroundMain"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingHorizontal="8dp"-->
+<!--            android:paddingVertical="10dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivthemnhan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:contentDescription="@string/TEXT"-->
+<!--                app:srcCompat="@drawable/new_label_24" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvthemnhan"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:text="@string/TEXT8"-->
+<!--                android:textColor="@color/secondary_light"-->
+<!--                android:textSize="16sp" />-->
+<!--        </LinearLayout>-->
+
+    </LinearLayout>
 </ScrollView>

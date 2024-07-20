@@ -1,6 +1,8 @@
 package com.example.collabtask
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -8,9 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,37 +26,37 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DashboardFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
-    private var _binding: DashboardFragmentBinding? = null
+class DashboardFragment : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
+    private lateinit var binding: DashboardFragmentBinding
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = DashboardFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DashboardFragmentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
 
-        binding.dashboardGroupList.layoutManager = LinearLayoutManager(context)
+        binding.dashboardGroupList.layoutManager = LinearLayoutManager(applicationContext)
 
-        viewLifecycleOwner.lifecycleScope.launch {
+        lifecycleScope.launch {
             val itemList = DashboardApiUseCases.getUserJoinedTeam()
             if (itemList != null) {
                 binding.dashboardGroupList.adapter =
-                    DashboardGroupListAdapter(itemList, findNavController())
+                    DashboardGroupListAdapter(
+                        itemList,
+                        { navigateToBoardDetail(it) },
+                        { navigateToGroupDetail(it) })
             }
             return@launch
         }
 
         binding.addBtn.setOnClickListener {
-            val popup = PopupMenu(context, it).apply {
+            val popup = PopupMenu(applicationContext, it).apply {
                 setOnMenuItemClickListener(this@DashboardFragment)
             }
             popup.menuInflater.inflate(R.menu.dashboard_add_menu, popup.menu)
@@ -65,7 +69,7 @@ class DashboardFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         return when (item.itemId) {
             R.id.add_team -> {
                 val dialog = AddTeamDialogFragment()
-                dialog.show(requireFragmentManager(), "add_team_dialog")
+                dialog.show(supportFragmentManager, "add_team_dialog")
                 true
             }
 //            R.id.add_personal_board -> {
@@ -77,15 +81,27 @@ class DashboardFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    private fun navigateToBoardDetail(boardId: String) {
+        val intent = Intent(this, BoardDetail::class.java)
+        intent.putExtra("boardId", boardId)
+        startActivity(intent)
+    }
+
+    private fun navigateToGroupDetail(groupDetail: String) {
+        val intent = Intent(this, GroupDetailActivity::class.java)
+        intent.putExtra("groupId", groupDetail)
+        startActivity(intent)
     }
 }
 
 class DashboardGroupListAdapter(
     private val itemList: List<DocumentSnapshot>,
-    private val navController: NavController
+    private val navigateToBoardDetail: (String) -> Unit,
+    private val navigateToGroupDetail: (String) -> Unit
 ) :
     RecyclerView.Adapter<DashboardGroupListViewHolder>() {
 
@@ -101,9 +117,9 @@ class DashboardGroupListAdapter(
     override fun onBindViewHolder(holder: DashboardGroupListViewHolder, position: Int) {
         val currentItem = itemList[position]
         holder.textGroupName.text = currentItem.get("name").toString()
-        holder.bind(currentItem, navController)
+        holder.bind(currentItem, navigateToBoardDetail)
         holder.textGroupNavigate.setOnClickListener {
-            navController.navigate(R.id.groupDetailActivity)
+            navigateToGroupDetail(currentItem.id)
         }
     }
 
@@ -117,7 +133,7 @@ class DashboardGroupListViewHolder(itemView: View) : RecyclerView.ViewHolder(ite
     val textGroupNavigate: TextView =
         itemView.findViewById(R.id.dashboard_group_item_title_navigate)
 
-    fun bind(item: DocumentSnapshot, navController: NavController) { //item is Team
+    fun bind(item: DocumentSnapshot, navigateToBoardDetail: (String) -> Unit) { //item is Team
         // Set up inner RecyclerView
         val innerRecyclerView: RecyclerView =
             itemView.findViewById(R.id.dashboard_group_item_boards_list)
@@ -126,7 +142,7 @@ class DashboardGroupListViewHolder(itemView: View) : RecyclerView.ViewHolder(ite
         CoroutineScope(Dispatchers.Main).launch {
             val boardItemList = DashboardApiUseCases.getRecentBoardsOfTeam(item.id)
             innerRecyclerView.adapter =
-                DashboardGroupItemAdapter(item.id, boardItemList, navController)
+                DashboardGroupItemAdapter(item.id, boardItemList, navigateToBoardDetail)
             return@launch
         }
     }

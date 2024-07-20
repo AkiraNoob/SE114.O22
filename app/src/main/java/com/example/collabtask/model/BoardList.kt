@@ -1,8 +1,9 @@
 package com.example.collabtask.model
 
 data class BoardList(
-    val boardId: String = "",
-    val title: String = "",
-    val color: String? = "",
+    var id: String = "",
+    var boardId: String = "",
+    var title: String = "",
+    var color: String? = "",
 )
 

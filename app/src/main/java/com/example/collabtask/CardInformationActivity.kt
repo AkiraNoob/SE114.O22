@@ -8,58 +8,109 @@ import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.collabtask.databinding.CardInformationBinding
+import com.example.collabtask.model.Card
+import com.example.collabtask.use_case.CardDetailApiUseCases
+import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.launch
 
 class CardInformationActivity : AppCompatActivity() {
+
+    private lateinit var binding: CardInformationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.card_information)
+
+        binding = CardInformationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         setupActionBar()
 
         tvSelectedDateTime = findViewById(R.id.tvngayhethan)
 
-        val btnBrowseImage: TextView = findViewById(R.id.tvchontuthuvienanh)
-        imgSelected = findViewById(R.id.ivanh)
+//        val btnBrowseImage: TextView = findViewById(R.id.tvchontuthuvienanh)
+//        imgSelected = findViewById(R.id.ivanh)
 
-        btnBrowseImage.setOnClickListener {
-            openImagePicker()
-        }
+//        btnBrowseImage.setOnClickListener {
+//            openImagePicker()
+//        }
 // Tìm nút (menu)
         val btnPopup: ImageButton = findViewById(R.id.imageButton2menu)
-        val btnPopup2: ImageButton = findViewById(R.id.imageButtonfilter)
+//        val btnPopup2: ImageButton = findViewById(R.id.imageButtonfilter)
 
 // Đặt click listener (menu)
-        btnPopup2.setOnClickListener { view -> showPopupFilterMenu(view) }
+//        btnPopup2.setOnClickListener { view -> showPopupFilterMenu(view) }
         btnPopup.setOnClickListener { view -> showPopupMenu(view) }
 
         // Đặt click listener (layout)
-        val overlayLayout: View = findViewById(R.id.rloverlayattachment)
-        val btnAttachmentFile: Button = findViewById(R.id.buttonthemtep)
+//        val overlayLayout: View = findViewById(R.id.rloverlayattachment)
+//        val btnAttachmentFile: Button = findViewById(R.id.buttonthemtep)
 
-        btnAttachmentFile.setOnClickListener {
-            if (overlayLayout.visibility == View.GONE) {
-                overlayLayout.visibility = View.VISIBLE
-            } else overlayLayout.visibility = View.GONE
-        }
-
-        val btnLabel: View = findViewById(R.id.vthemnhan)
-        btnLabel.setOnClickListener {
-            startActivity(Intent(this, labelActivity::class.java))
-        }
+//        btnAttachmentFile.setOnClickListener {
+//            if (overlayLayout.visibility == View.GONE) {
+//                overlayLayout.visibility = View.VISIBLE
+//            } else overlayLayout.visibility = View.GONE
+//        }
+//
+//        val btnLabel: View = findViewById(R.id.vthemnhan)
+//        btnLabel.setOnClickListener {
+//            startActivity(Intent(this, labelActivity::class.java))
+//        }
 
         val btnPickDateTime: View = findViewById(R.id.vngayhethan)
 
         btnPickDateTime.setOnClickListener {
             showDatePicker()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        lifecycleScope.launch {
+            val document =
+                CardDetailApiUseCases.getCardDetail(intent.getStringExtra("cardId").toString())
+
+            val cardFirestore = FirebaseFirestore.getInstance().collection("card")
+            val changeCardName = { value: String ->
+                cardFirestore.document(intent.getStringExtra("cardId").toString())
+                    .update("name", value)
+            }
+            val changeCardDescription = { value: String ->
+                cardFirestore.document(intent.getStringExtra("cardId").toString())
+                    .update("description", value)
+            }
+
+            if (document != null) {
+                binding.tvgroup.setText(document.get("name").toString())
+                binding.tvgroup.setOnKeyListener { _, keyCode, event ->
+                    if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                        changeCardName(binding.tvgroup.text.toString())
+                    }
+                    false
+                }
+                binding.tvthemmota.setText(document.get("description").toString())
+                binding.tvthemmotaconfirm.setOnClickListener{ _ ->
+                    Log.i("hehe", binding.tvthemmota.text.toString())
+                    changeCardDescription(binding.tvthemmota.text.toString())
+                    false
+                }
+            }
+        }
+
     }
 
     private fun setupActionBar() {
@@ -95,23 +146,26 @@ class CardInformationActivity : AppCompatActivity() {
         popupMenufilter.show()
     }
 
-// Chức năng click lựa chọn
-     private fun handleMenuItemClick(menuItem: MenuItem){
-         when(menuItem.itemId){
-             R.id.action_delete -> {
-                 Toast.makeText(this, "Đã xóa thẻ", Toast.LENGTH_SHORT).show()
-             }
-         }
-     }
-    private fun handleFilterMenuItemClick(menuItem2: MenuItem){
-        when(menuItem2.itemId){
+    // Chức năng click lựa chọn
+    private fun handleMenuItemClick(menuItem: MenuItem) {
+        when (menuItem.itemId) {
+            R.id.action_delete -> {
+                Toast.makeText(this, "Đã xóa thẻ", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun handleFilterMenuItemClick(menuItem2: MenuItem) {
+        when (menuItem2.itemId) {
             R.id.action_showcomment -> {
                 Toast.makeText(this, "Đã hiện bình luận", Toast.LENGTH_SHORT).show()
             }
+
             R.id.action_showaction -> {
                 Toast.makeText(this, "Đã hiện hoạt động", Toast.LENGTH_SHORT).show()
             }
-            R.id.action_showboth-> {
+
+            R.id.action_showboth -> {
                 Toast.makeText(this, "Đã hiện cả hai", Toast.LENGTH_SHORT).show()
             }
         }
@@ -142,18 +196,20 @@ class CardInformationActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            this.selectedYear = selectedYear
-            this.selectedMonth = selectedMonth
-            this.selectedDay = selectedDay
-            showTimePicker()
-        }, year, month, day)
+        val datePickerDialog =
+            DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                this.selectedYear = selectedYear
+                this.selectedMonth = selectedMonth
+                this.selectedDay = selectedDay
+                showTimePicker()
+            }, year, month, day)
 
         datePickerDialog.show()
     }
@@ -173,7 +229,8 @@ class CardInformationActivity : AppCompatActivity() {
     }
 
     private fun displaySelectedDateTime() {
-        val selectedDateTime = "$selectedDay/${selectedMonth + 1}/$selectedYear $selectedHour:$selectedMinute"
+        val selectedDateTime =
+            "$selectedDay/${selectedMonth + 1}/$selectedYear $selectedHour:$selectedMinute"
         tvSelectedDateTime.text = selectedDateTime
     }
 }

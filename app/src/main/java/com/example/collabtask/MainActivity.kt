@@ -1,5 +1,6 @@
 package com.example.collabtask
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.launch
 import kotlin.coroutines.coroutineContext
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -45,7 +47,8 @@ class MainActivity : AppCompatActivity() {
                         )
                         UserApiUseCases.createUser(user)
                     }
-                    navController.navigate(R.id.navigation_fragment)
+                    val intent = Intent(applicationContext, DashboardFragment::class.java)
+                    startActivity(intent)
                 }
             }
         }

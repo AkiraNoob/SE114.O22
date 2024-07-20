@@ -16,7 +16,7 @@ import com.google.firebase.firestore.QuerySnapshot
 class DashboardGroupItemAdapter(
     private val teamId: String,
     private val itemList: QuerySnapshot?,
-    private val navController: NavController
+    private val navigateToBoardDetail: (String) -> Unit
 ) :
     RecyclerView.Adapter<DashboardGroupItemViewHolder>() {
     override fun onCreateViewHolder(
@@ -33,7 +33,7 @@ class DashboardGroupItemAdapter(
             val currentItem = itemList.documents[position]
             holder.textBoardName.text = currentItem.get("name").toString()
             holder.wrapper.setOnClickListener {
-                navController.navigate(R.id.boardDetail)
+                navigateToBoardDetail(currentItem.id)
             }
             if (position == itemCount - 1) {
                 holder.divider.visibility = View.GONE

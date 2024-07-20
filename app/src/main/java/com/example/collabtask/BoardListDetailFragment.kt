@@ -1,6 +1,9 @@
 package com.example.collabtask
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -8,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,38 +20,33 @@ import com.example.collabtask.databinding.BoardListDetailFragmentBinding
 import com.example.collabtask.model.Card
 import com.example.collabtask.model.User
 import com.example.collabtask.use_case.BoardListDetailApiUseCases
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.snapshots
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 
-class BoardListDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
-    private var _binding: BoardListDetailFragmentBinding? = null
-    private val itemList: MutableList<Card> = mutableListOf()
+class BoardListDetailFragment : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
+    private lateinit var binding: BoardListDetailFragmentBinding
+    private var itemList: MutableList<Card> = mutableListOf()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = BoardListDetailFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = BoardListDetailFragmentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.boardCardsList.layoutManager = LinearLayoutManager(context)
-
+    override fun onStart() {
+        super.onStart()
+        binding.boardCardsList.layoutManager = LinearLayoutManager(applicationContext)
 
         binding.menuBtn.setOnClickListener {
-            val popup = PopupMenu(context, it).apply {
+            val popup = PopupMenu(applicationContext, it).apply {
                 setOnMenuItemClickListener(this@BoardListDetailFragment)
             }
             popup.menuInflater.inflate(R.menu.add_card_menu, popup.menu)
@@ -55,31 +54,59 @@ class BoardListDetailFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             popup.show()
         }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            val cardList = BoardListDetailApiUseCases.getCardsOfBoardList("Fh77v9HiodxqbkBjawfD")
+        lifecycleScope.launch {
+            itemList = BoardListDetailApiUseCases.getCardsOfBoardList(
+                intent.getStringExtra("boardListId").toString()
+            ).toMutableList()
 
-            binding.boardCardsList.adapter = BoardDetailAdapter(cardList)
+            binding.boardCardsList.adapter =
+                BoardDetailAdapter(itemList, { navigateToCardDetail(it) })
+        }
+    }
+
+    private fun addCardSuccessCallback(item: DocumentReference) {
+        Log.i("hehe", "got it")
+        lifecycleScope.launch {
+            val card = item.get().await().toObject(Card::class.java)
+            if (card != null) {
+                Log.i("hehe", card.toString())
+                itemList.add(card)
+                binding.boardCardsList.adapter!!.notifyItemChanged(itemList.size - 1)
+            }
         }
     }
 
     override fun onMenuItemClick(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.add_card -> {
-                val dialog = AddCardDialogFragment("Fh77v9HiodxqbkBjawfD")
-                dialog.show(requireFragmentManager(), "add_card_dialog")
+                val dialog =
+                    AddCardDialogFragment(
+                        intent.getStringExtra("boardListId").toString(),
+                        { addCardSuccessCallback(it) })
+                dialog.show(supportFragmentManager, "add_card_dialog")
                 true
             }
+
             else -> false
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun navigateToCardDetail(cardId: String) {
+        val intent = Intent(this, CardInformationActivity::class.java)
+        intent.putExtra("cardId", cardId)
+        startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        itemList.clear()
     }
 }
 
-class BoardDetailAdapter(private val itemList: List<Card>) :
+class BoardDetailAdapter(
+    private val itemList: List<Card>,
+    private val navigateToCardDetail: (String) -> Unit
+) :
     RecyclerView.Adapter<BoardDetailViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardDetailViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -107,6 +134,10 @@ class BoardDetailAdapter(private val itemList: List<Card>) :
         }
 
         holder.bind(itemList[position])
+
+        holder.boardCardItem.setOnClickListener {
+            navigateToCardDetail(currentItem.id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -124,19 +155,21 @@ class BoardDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val boardCardLabelList: RecyclerView = itemView.findViewById(R.id.board_card_labels_list)
     val boardCardUserJoinedList: RecyclerView = itemView.findViewById(R.id.board_card_users_list)
 
+    val boardCardItem: LinearLayout = itemView.findViewById(R.id.board_card_item)
+
     fun bind(item: Card) {
         // Set up inner RecyclerView
-        if (!item.labelList.isNullOrEmpty()) {
-            val labelsListRecyclerView: RecyclerView =
-                itemView.findViewById(R.id.board_card_labels_list)
-
-            val layoutManager = LinearLayoutManager(itemView.context)
-            layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-
-            labelsListRecyclerView.layoutManager = layoutManager
-
-            labelsListRecyclerView.adapter = CardLabelItemAdapter(item.labelList!!)
-        }
+//        if (!item.labelList.isNullOrEmpty()) {
+//            val labelsListRecyclerView: RecyclerView =
+//                itemView.findViewById(R.id.board_card_labels_list)
+//
+//            val layoutManager = LinearLayoutManager(itemView.context)
+//            layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+//
+//            labelsListRecyclerView.layoutManager = layoutManager
+//
+//            labelsListRecyclerView.adapter = CardLabelItemAdapter(item.labelList!!)
+//        }
 
         if (!item.userJoinedCard.isNullOrEmpty()) {
             val userJoinedList: MutableList<User> = mutableListOf()

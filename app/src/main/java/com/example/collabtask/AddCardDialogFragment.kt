@@ -10,10 +10,16 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
 import com.example.collabtask.model.Card
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 
-class AddCardDialogFragment(private val listId: String) : DialogFragment() {
+class AddCardDialogFragment(
+    private val listId: String,
+    private val onSuccessListener: (DocumentReference) -> Unit
+) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inflater = requireActivity().layoutInflater
@@ -27,6 +33,7 @@ class AddCardDialogFragment(private val listId: String) : DialogFragment() {
         val cardFirestore = FirebaseFirestore.getInstance().collection("card")
         val addCard = { name: String ->
             cardFirestore.add(Card(name = name, listId = listId)).addOnSuccessListener {
+                onSuccessListener(it)
                 dialog.dismiss()
             }.addOnFailureListener {
                 view.findViewById<TextInputLayout>(R.id.card_name_input_layout).error =

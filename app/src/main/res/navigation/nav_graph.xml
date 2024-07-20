@@ -14,22 +14,16 @@
             android:id="@+id/action_LoginFragment_to_navigationActivity"
             app:destination="@id/navigation_fragment" />
     </fragment>
-    <fragment
-        android:id="@+id/navigation_fragment"
-        android:name="com.example.collabtask.NavigationLayoutFragment"
-        tools:layout="@layout/navigation_layout_fragment"
-        android:label="NavigationLayoutFragment" >
-    </fragment>
-    <fragment
+    <activity
         android:id="@+id/boardList_detail_fragment"
         android:name="com.example.collabtask.BoardListDetailFragment"
         android:label="BoardDetailFragment" >
-    </fragment>
-    <fragment
+    </activity>
+    <activity
         android:id="@+id/boardDetail"
         android:name="com.example.collabtask.BoardDetail"
         android:label="BoardDetail" />
-    <fragment
+    <activity
         android:id="@+id/dashboardFragment"
         android:name="com.example.collabtask.DashboardFragment"
         android:label="DashboardFragment" />

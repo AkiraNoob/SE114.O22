@@ -1,149 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/dashboard_fragment"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/secondary"
+    android:id="@+id/dashboard_fragment"
+    tools:context=".DashboardFragment">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/secondary"
-        android:orientation="vertical"
-        android:paddingTop="40dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingHorizontal="8dp"
-            android:paddingBottom="24dp">
+            android:background="@color/secondary"
+            android:orientation="vertical"
+            android:paddingTop="40dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="24dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Konet"
-                    android:textFontWeight="600"
-                    android:textSize="48sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tạo các nhóm và bảng làm việc để bắt đầu ngay"
-                    android:textFontWeight="400"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Konet"
+                        android:textFontWeight="600"
+                        android:textSize="48sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tạo các nhóm và bảng làm việc để bắt đầu ngay"
+                        android:textFontWeight="400"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/add_btn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/circle_shape"
+                    android:backgroundTint="@color/secondary_weight_light"
+                    android:contentDescription="add new board or team"
+                    android:src="@drawable/add_24" />
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/add_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/circle_shape"
-                android:backgroundTint="@color/secondary_weight_light"
-                android:contentDescription="add new board or team"
-                android:src="@drawable/add_24" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="vertical"-->
+            <!--            android:paddingHorizontal="8dp">-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:paddingBottom="16dp">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:text="Không gian cá nhân"-->
+            <!--                    android:textFontWeight="600"-->
+            <!--                    android:textSize="20sp" />-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:drawablePadding="8dp"-->
+            <!--                    android:gravity="center_vertical"-->
+            <!--                    android:text="Toàn bộ"-->
+            <!--                    android:textFontWeight="600"-->
+            <!--                    app:drawableEndCompat="@drawable/keyboard_double_arrow_right_24" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="150dp"-->
+            <!--                android:background="@drawable/rounded_primary_bg"-->
+            <!--                android:padding="8dp">-->
+
+            <!--                <com.google.android.material.button.MaterialButton-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/other"-->
+            <!--                    android:insetTop="0dp"-->
+            <!--                    android:insetBottom="0dp"-->
+            <!--                    app:cornerRadius="8dp" />-->
+
+            <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                    android:layout_width="16dp"-->
+            <!--                    android:layout_height="match_parent" />-->
+
+            <!--                <com.google.android.material.button.MaterialButton-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/other"-->
+            <!--                    android:insetTop="0dp"-->
+            <!--                    android:insetBottom="0dp"-->
+            <!--                    app:cornerRadius="8dp" />-->
+
+            <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--                    android:layout_width="16dp"-->
+            <!--                    android:layout_height="match_parent" />-->
+
+            <!--                <com.google.android.material.button.MaterialButton-->
+            <!--                    android:layout_width="0dp"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:backgroundTint="@color/other"-->
+            <!--                    android:insetTop="0dp"-->
+            <!--                    android:insetBottom="0dp"-->
+            <!--                    app:cornerRadius="8dp" />-->
+            <!--            </LinearLayout>-->
+
+            <!--        </LinearLayout>-->
+
+            <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="24dp" />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="16dp"
+                android:text="Không gian nhóm"
+                android:textFontWeight="600"
+                android:textSize="20sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dashboard_group_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
+    </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="24dp" />
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingHorizontal="8dp">-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingBottom="16dp">-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:text="Không gian cá nhân"-->
-<!--                    android:textFontWeight="600"-->
-<!--                    android:textSize="20sp" />-->
-
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:drawablePadding="8dp"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:text="Toàn bộ"-->
-<!--                    android:textFontWeight="600"-->
-<!--                    app:drawableEndCompat="@drawable/keyboard_double_arrow_right_24" />-->
-<!--            </LinearLayout>-->
-
-<!--            <LinearLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:background="@drawable/rounded_primary_bg"-->
-<!--                android:padding="8dp">-->
-
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:backgroundTint="@color/other"-->
-<!--                    android:insetTop="0dp"-->
-<!--                    android:insetBottom="0dp"-->
-<!--                    app:cornerRadius="8dp" />-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="16dp"-->
-<!--                    android:layout_height="match_parent" />-->
-
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:backgroundTint="@color/other"-->
-<!--                    android:insetTop="0dp"-->
-<!--                    android:insetBottom="0dp"-->
-<!--                    app:cornerRadius="8dp" />-->
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="16dp"-->
-<!--                    android:layout_height="match_parent" />-->
-
-<!--                <com.google.android.material.button.MaterialButton-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:backgroundTint="@color/other"-->
-<!--                    android:insetTop="0dp"-->
-<!--                    android:insetBottom="0dp"-->
-<!--                    app:cornerRadius="8dp" />-->
-<!--            </LinearLayout>-->
-
-<!--        </LinearLayout>-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="24dp" />-->
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="8dp"
-            android:paddingBottom="16dp"
-            android:text="Không gian nhóm"
-            android:textFontWeight="600"
-            android:textSize="20sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/dashboard_group_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

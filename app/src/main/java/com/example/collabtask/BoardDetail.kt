@@ -4,8 +4,10 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
@@ -33,75 +35,76 @@ import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class BoardDetail : Fragment() {
+class BoardDetail : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
-    private var _binding: BoardDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: BoardDetailBinding
 
-
-    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: BoardAdapter
-    private lateinit var menuButton: ImageView
     private lateinit var memberDialog: AlertDialog
     val tableData = mutableListOf<BoardList>()
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = BoardDetailBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = BoardDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        showMemberDialog()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
 
-        recyclerView = view.findViewById(R.id.board_view_table)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.boardViewTable.layoutManager = LinearLayoutManager(applicationContext)
+
+        binding.boardImageView2.setOnClickListener {
+            val popupMenu = PopupMenu(applicationContext, it).apply {
+                setOnMenuItemClickListener(this@BoardDetail)
+            }
+            popupMenu.menuInflater.inflate(R.menu.menu_board_detail, popupMenu.menu)
+            popupMenu.setForceShowIcon(true)
+            popupMenu.show()
+        }
 
         lifecycleScope.launch {
             val boardListFirestore = FirebaseFirestore.getInstance().collection("boardList")
-                .whereEqualTo("boardId", "78pvKSFbeHOMVbKPWdqo").get().await()
+                .whereEqualTo("boardId", intent.getStringExtra("boardId")).get().await()
 
             for (documents in boardListFirestore.documents) {
                 val boardList = documents.toObject(BoardList::class.java)
                 if (boardList != null) {
+                    boardList.id = documents.id
                     tableData.add(boardList)
                 }
             }
 
-            adapter = BoardAdapter(tableData, findNavController())
-            recyclerView.adapter = adapter
+            adapter = BoardAdapter(tableData, { navigateToBoardListDetail(it) })
+            binding.boardViewTable.adapter = adapter
         }
 
         // Menu button
-        menuButton = view.findViewById(R.id.board_imageView2)
-        menuButton.setOnClickListener {
-            val popupMenu = PopupMenu(requireContext(), it)
-            popupMenu.inflate(R.menu.menu_board_detail)
-            popupMenu.setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.create_list -> {
-                        showAddListDialog()
-                        true
-                    }
 
-                    R.id.member -> {
-                        showMemberDialog()
-                        true
-                    }
-
-                    else -> false
-                }
+    }
+    override fun onMenuItemClick(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.create_list -> {
+                showAddListDialog()
+                true
             }
-            popupMenu.show()
+
+            R.id.member -> {
+                memberDialog.show()
+                true
+            }
+
+            else -> false
         }
     }
 
     private fun showMemberDialog() {
-        val builder = AlertDialog.Builder(context)
-        val inflater = LayoutInflater.from(context)
+        val builder = AlertDialog.Builder(applicationContext)
+        val inflater = LayoutInflater.from(applicationContext)
         val view = inflater.inflate(R.layout.dialog_add_member, null)
 
         val editEmail = view.findViewById<EditText>(R.id.edit_email)
@@ -110,7 +113,7 @@ class BoardDetail : Fragment() {
 
         val memberAdapter = MemberAdapter(mutableListOf())
 
-        memberList.layoutManager = LinearLayoutManager(context)
+        memberList.layoutManager = LinearLayoutManager(applicationContext)
         memberList.adapter = memberAdapter
 
         closeDialog.setOnClickListener {
@@ -121,7 +124,8 @@ class BoardDetail : Fragment() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val email = editEmail.text.toString()
                 if (email.isEmpty()) {
-                    Toast.makeText(context, "Vui lòng nhập email", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Vui lòng nhập email", Toast.LENGTH_SHORT)
+                        .show()
                 } else {
 
                     memberAdapter.addMember(email)
@@ -134,12 +138,11 @@ class BoardDetail : Fragment() {
         }
 
         memberDialog = builder.setView(view).create()
-        memberDialog.show()
     }
 
     private fun showAddListDialog() {
-        val builder = AlertDialog.Builder(context)
-        val inflater = LayoutInflater.from(context)
+        val builder = AlertDialog.Builder(applicationContext)
+        val inflater = LayoutInflater.from(applicationContext)
         val view = inflater.inflate(R.layout.dialog_add_list, null)
 
         val editListName = view.findViewById<EditText>(R.id.edit_list_name)
@@ -158,13 +161,18 @@ class BoardDetail : Fragment() {
                 val groupName = editGroupName.text.toString()
                 if (listName.isEmpty() && groupName.isEmpty()) {
                     Toast.makeText(
-                        context,
+                        applicationContext,
                         "Vui lòng nhập tên danh sách và tên nhóm",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {
 
-                    tableData.add(BoardList(title = "Danh sách $listName", boardId = "78pvKSFbeHOMVbKPWdqo"))
+                    tableData.add(
+                        BoardList(
+                            title = "Danh sách $listName",
+                            boardId = "78pvKSFbeHOMVbKPWdqo"
+                        )
+                    )
 
                     adapter.notifyItemInserted(tableData.size - 1)
 
@@ -178,9 +186,25 @@ class BoardDetail : Fragment() {
 
         dialog.show()
     }
+
+    private fun navigateToBoardListDetail(boardListId: String) {
+        val intent = Intent(this, BoardListDetailFragment::class.java)
+        intent.putExtra("boardListId", boardListId)
+        tableData.clear()
+        startActivity(intent)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        tableData.clear()
+    }
+
 }
 
-class BoardAdapter(private val data: MutableList<BoardList>, private val navController: NavController) :
+class BoardAdapter(
+    private val data: MutableList<BoardList>,
+    private val navigateToBoardListDetail: (String) -> Unit
+) :
     RecyclerView.Adapter<BoardAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -199,7 +223,7 @@ class BoardAdapter(private val data: MutableList<BoardList>, private val navCont
         holder.textView5.text = item.title
         holder.card.setCardBackgroundColor(Color.parseColor(item.color))
         holder.card.setOnClickListener {
-            navController.navigate(R.id.boardList_detail_fragment)
+            navigateToBoardListDetail(item.id)
         }
     }
 

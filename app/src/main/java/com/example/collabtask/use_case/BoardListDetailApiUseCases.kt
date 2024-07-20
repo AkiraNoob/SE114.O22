@@ -23,6 +23,7 @@ class BoardListDetailApiUseCases {
             for (document in querySnapshot.documents) {
                 val card = document.toObject(Card::class.java)
                 if (card != null) {
+                    card.id = document.id
                     val labelQuerySnapshot =
                         cardFirestore.document(document.id).collection("label").get().await()
                     val labelList = mutableListOf<Label>()
@@ -39,8 +40,8 @@ class BoardListDetailApiUseCases {
                         cardFirestore.document(document.id).collection("comment").get().await()
                     val commentList = mutableListOf<CardComment>()
 
-                    for (commentQuerySnapshot in commentQuerySnapshot.documents) {
-                        val comment = commentQuerySnapshot.toObject(CardComment::class.java)
+                    for (commentQuerySnapshotDocument in commentQuerySnapshot.documents) {
+                        val comment = commentQuerySnapshotDocument.toObject(CardComment::class.java)
                         if (comment != null) {
                             commentList.add(comment)
                         }

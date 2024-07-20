@@ -5,10 +5,10 @@
         android:id="@+id/create_list"
         android:title="Tạo danh sách"
         android:icon="@drawable/playlist_add_24"
-        app:showAsAction="never" />
+        />
     <item
         android:id="@+id/member"
         android:title="Thêm thành viên"
         android:icon="@drawable/person_add_24"
-        app:showAsAction="never"/>
+        />
 </menu>
